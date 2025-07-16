@@ -1,7 +1,16 @@
 import { motion } from 'framer-motion';
 import { Phone, Mail, MapPin, Facebook, Linkedin } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
+  const navItems = [
+    { label: 'Accueil', href: '/' },
+    { label: 'Nos services', href: '/services' },
+    { label: 'Nos produits', href: '/produits' },
+    { label: 'À propos', href: '/apropos' },
+    { label: 'Contact', href: '/contact' },
+  ];
+
   const services = [
     'HACCP',
     'ISO 9001:2015',
@@ -23,7 +32,7 @@ const Footer = () => {
   return (
     <footer className="bg-card border-t">
       <div className="container mx-auto px-4 py-16">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {/* Company Info */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -61,42 +70,45 @@ const Footer = () => {
             </div>
           </motion.div>
 
-          {/* Services */}
+          {/* Navigation */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
           >
-            <h3 className="font-bold text-foreground mb-4">Nos Services</h3>
+            <h3 className="font-bold text-foreground mb-4">Navigation</h3>
             <ul className="space-y-2">
-              {services.map((service) => (
-                <li key={service}>
-                  <a
-                    href="#services"
+              {navItems.map((item) => (
+                <li key={item.label}>
+                  <Link
+                    to={item.href}
                     className="text-muted-foreground hover:text-primary transition-colors duration-300"
                   >
-                    {service}
-                  </a>
+                    {item.label}
+                  </Link>
                 </li>
               ))}
             </ul>
           </motion.div>
 
-          {/* Certifications */}
+          {/* Services */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
           >
-            <h3 className="font-bold text-foreground mb-4">Certifications</h3>
+            <h3 className="font-bold text-foreground mb-4">Nos Services</h3>
             <ul className="space-y-2">
-              {certifications.map((cert) => (
-                <li key={cert}>
-                  <span className="text-muted-foreground text-sm">
-                    {cert}
-                  </span>
+              {services.map((service) => (
+                <li key={service}>
+                  <Link
+                    to="/services"
+                    className="text-muted-foreground hover:text-primary transition-colors duration-300"
+                  >
+                    {service}
+                  </Link>
                 </li>
               ))}
             </ul>

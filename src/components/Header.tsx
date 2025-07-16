@@ -12,7 +12,7 @@ const Header = () => {
     { label: 'Accueil', href: '/' },
     { label: 'Nos services', href: '/services' },
     { label: 'Nos produits', href: '/produits' },
-    { label: 'Contact', href: '/contact' },
+    { label: 'À propos', href: '/apropos' },
   ];
 
   return (
@@ -60,8 +60,8 @@ const Header = () => {
               <Phone className="h-4 w-4" />
               <span>+261 34 28 449 51</span>
             </div>
-            <Button variant="hero" size="sm">
-              Nous contacter
+            <Button variant="hero" size="sm" asChild>
+              <Link to="/contact">Nous contacter</Link>
             </Button>
           </div>
 
@@ -102,8 +102,8 @@ const Header = () => {
                   <Phone className="h-4 w-4" />
                   <span>+261 34 28 449 51</span>
                 </div>
-                <Button variant="hero" className="w-full">
-                  Nous contacter
+                <Button variant="hero" className="w-full" asChild>
+                  <Link to="/contact">Nous contacter</Link>
                 </Button>
               </div>
             </nav>

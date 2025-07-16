@@ -54,10 +54,12 @@ export default {
 				},
 				// Greentany brand colors
 				brand: {
-					blue: 'hsl(var(--brand-blue))',
 					green: 'hsl(var(--brand-green))',
-					'light-green': 'hsl(var(--brand-light-green))',
-					'light-blue': 'hsl(var(--brand-light-blue))'
+					'green-light': 'hsl(var(--brand-green-light))',
+					'green-lighter': 'hsl(var(--brand-green-lighter))',
+					'green-dark': 'hsl(var(--brand-green-dark))',
+					neutral: 'hsl(var(--brand-neutral))',
+					'neutral-light': 'hsl(var(--brand-neutral-light))'
 				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
@@ -72,11 +74,13 @@ export default {
 			},
 			backgroundImage: {
 				'gradient-primary': 'var(--gradient-primary)',
-				'gradient-hero': 'var(--gradient-hero)'
+				'gradient-hero': 'var(--gradient-hero)',
+				'gradient-card': 'var(--gradient-card)'
 			},
 			boxShadow: {
 				'brand': 'var(--shadow-brand)',
-				'brand-glow': 'var(--shadow-glow)'
+				'brand-glow': 'var(--shadow-glow)',
+				'card': 'var(--shadow-card)'
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
