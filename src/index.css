@@ -130,3 +130,13 @@ All colors MUST be HSL.
     @apply bg-background text-foreground;
   }
 }
+
+:root {
+  --sky-400: #38bdf8;
+  --sky-500: #0ea5e9;
+}
+
+.dark {
+  --sky-400: #38bdf8;
+  --sky-500: #0ea5e9;
+}
