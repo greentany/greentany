@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Calendar, Users, Award, Target, Shield, Leaf, BarChart2, HeartHandshake } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
+import { Link } from 'react-router-dom';
 
 const About = () => {
   const stats = [
@@ -56,6 +57,47 @@ const About = () => {
   return (
     <section id="expertise" className="py-24 bg-gradient-to-b from-white to-slate-50">
       <div className="container mx-auto px-4">
+        {/* Header Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+          className="text-center mb-16 max-w-4xl mx-auto"
+        >
+          <motion.div 
+            initial={{ scale: 0 }}
+            whileInView={{ scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
+            className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-100 to-teal-100 px-6 py-3 rounded-full mb-6 shadow-lg"
+          >
+            <div className="w-3 h-3 rounded-full bg-gradient-to-r from-blue-600 to-teal-600 animate-pulse"></div>
+            <span className="text-sm font-semibold text-blue-700">À propos de nous</span>
+          </motion.div>
+          
+          <motion.h2 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3, duration: 0.8 }}
+            className="text-4xl md:text-5xl font-bold text-slate-800 mb-6"
+          >
+            Notre <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-teal-600 to-blue-800">histoire</span> et notre expertise
+          </motion.h2>
+          
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.4, duration: 0.6 }}
+            className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed"
+          >
+            Depuis plus de 15 ans, nous accompagnons les entreprises dans leur démarche d'excellence 
+            en matière de qualité, sécurité et développement durable
+          </motion.p>
+        </motion.div>
+
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Content */}
           <motion.div
@@ -124,7 +166,7 @@ const About = () => {
             >
               <div className="absolute inset-0 bg-gradient-to-t from-slate-900/30 to-transparent z-10"></div>
               <img 
-                src="/lovable-uploads/b2e5e264-491e-427f-b50a-fcd4697c360e.png" 
+                src="/african-office-1.jpg" 
                 alt="Expert QHSE" 
                 className="w-full h-auto object-cover"
               />
@@ -171,9 +213,11 @@ const About = () => {
               transition={{ delay: 0.4 }}
               className="pt-4"
             >
+              <Link to="/contact">
               <button className="w-full py-4 bg-gradient-to-r from-blue-600 to-teal-600 text-white rounded-xl font-bold shadow-lg shadow-blue-500/20 hover:shadow-blue-500/40 transition-all">
                 Rencontrer notre équipe d'experts
               </button>
+              </Link>
             </motion.div>
           </motion.div>
         </div>

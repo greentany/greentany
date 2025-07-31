@@ -4,60 +4,11 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
-import { FeaturesSectionWithHoverEffects } from '@/components/ui/feature-section-with-hover-effects';
-import Partners from '@/components/Partners';
+import References from '@/components/References';
 
 const AboutPage = () => {
 
-  const clients = [
-    { 
-      name: 'Toyota', 
-      category: 'Automobile',
-      testimonial: "Leur expertise en conformité nous a permis d'améliorer nos processus de qualité de manière significative.",
-      image: '/path/to/toyota-logo.png' 
-    },
-    { 
-      name: 'LITE', 
-      category: 'Télécommunications',
-      testimonial: "Un accompagnement exceptionnel dans la mise en place de notre système de gestion qualité.",
-      image: '/path/to/lite-logo.png' 
-    },
-    { 
-      name: 'SCIM Madagascar', 
-      category: 'Industrie',
-      testimonial: "Grâce à GREENTANY, nous avons obtenu la certification ISO 9001 dans un temps record.",
-      image: '/path/to/scim-logo.png' 
-    },
-    { 
-      name: 'EXA Trading', 
-      category: 'Commerce',
-      testimonial: "Leur approche sur mesure a transformé notre gestion de la sécurité alimentaire.",
-      image: '/path/to/exa-logo.png' 
-    },
-    { 
-      name: 'CFM', 
-      category: 'Finance',
-      testimonial: "Un partenaire fiable pour nos audits qualité et conformité réglementaire.",
-      image: '/path/to/cfm-logo.png' 
-    },
-    { 
-      name: 'MALGAPRO', 
-      category: 'Agriculture',
-      testimonial: "Leur expertise nous a aidé à obtenir la certification Global G.A.P. pour nos produits.",
-      image: '/path/to/malcapro-logo.png' 
-    },
-    { 
-      name: 'Groupe Sodiat', 
-      category: 'Agroalimentaire',
-      testimonial: "Un accompagnement professionnel qui a boosté notre conformité et notre productivité.",
-      image: '/path/to/sodiat-logo.png' 
-    },
-    { 
-      name: 'Gasyfruits', 
-      category: 'Fruits & Légumes',
-      testimonial: "Leur formation HACCP a été déterminante pour notre certification internationale.",
-      image: '/path/to/gasyfruits-logo.png' 
-    },]
+  
    
     // Animation variants
     const containerVariants = {
@@ -192,7 +143,7 @@ const AboutPage = () => {
   ];
 
   return (
-    <div className="min-h-screen pt-20 bg-gradient-to-b from-slate-50 to-white">
+    <div className="min-h-screen pt-8 bg-gradient-to-b from-slate-50 to-white">
       {/* Hero Section */}
       <section className="relative py-24 md:py-32 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-blue-900/95 to-teal-900/95 z-0"></div>
@@ -260,6 +211,111 @@ const AboutPage = () => {
                 </div>
               </motion.div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Nos Services Section */}
+      <section className="py-24 bg-gradient-to-br from-slate-50 to-blue-50">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16 max-w-4xl mx-auto"
+          >
+            <div className="inline-flex items-center gap-2 bg-blue-100 px-4 py-2 rounded-full mb-6">
+              <div className="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></div>
+              <span className="text-sm font-medium text-blue-700">Nos Services</span>
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-800 mb-6">
+              Nos <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-teal-600">Services</span> Spécialisés
+            </h2>
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+              Greentany propose deux services complémentaires pour répondre aux besoins de nos clients
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Consulting Service */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="bg-white rounded-2xl p-8 shadow-lg border border-slate-100 hover:shadow-xl transition-all duration-300"
+            >
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-16 h-16 rounded-full bg-gradient-to-r from-blue-600 to-teal-600 flex items-center justify-center">
+                  <BookOpen className="h-8 w-8 text-white" />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold text-slate-800">Greentany Consulting</h3>
+                  <p className="text-blue-600 font-medium">Services de Conseil</p>
+                </div>
+              </div>
+              <p className="text-slate-600 mb-6 leading-relaxed">
+                Experts en sécurité alimentaire et normes sociales. Plus de 200 missions réalisées avec succès depuis 2008. 
+                Nous accompagnons les entreprises dans leur démarche d'excellence en matière de qualité et conformité.
+              </p>
+              <div className="space-y-3 mb-6">
+                <div className="flex items-center gap-3">
+                  <CheckCircle className="h-5 w-5 text-blue-600 flex-shrink-0" />
+                  <span className="text-slate-700">HACCP et sécurité alimentaire</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <CheckCircle className="h-5 w-5 text-blue-600 flex-shrink-0" />
+                  <span className="text-slate-700">Certification ISO 9001:2015</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <CheckCircle className="h-5 w-5 text-blue-600 flex-shrink-0" />
+                  <span className="text-slate-700">Audits SMETA et Global GAP</span>
+                </div>
+              </div>
+              <Button asChild className="w-full bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-700 hover:to-teal-700 text-white">
+                <Link to="/greentany-consulting">Découvrir Consulting</Link>
+              </Button>
+            </motion.div>
+
+            {/* Export Service */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4 }}
+              className="bg-white rounded-2xl p-8 shadow-lg border border-slate-100 hover:shadow-xl transition-all duration-300"
+            >
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-16 h-16 rounded-full bg-gradient-to-r from-emerald-600 to-green-600 flex items-center justify-center">
+                  <Globe className="h-8 w-8 text-white" />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold text-slate-800">Greentany Export</h3>
+                  <p className="text-emerald-600 font-medium">Exportation d'Épices</p>
+                </div>
+              </div>
+              <p className="text-slate-600 mb-6 leading-relaxed">
+                Producteur et grossiste d'épices et ingrédients biologiques et conventionnels d'origine Madagascar. 
+                Exportation dans le monde entier depuis 2016 avec plus de 1000 paysans partenaires.
+              </p>
+              <div className="space-y-3 mb-6">
+                <div className="flex items-center gap-3">
+                  <CheckCircle className="h-5 w-5 text-emerald-600 flex-shrink-0" />
+                  <span className="text-slate-700">Épices d'origine Madagascar</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <CheckCircle className="h-5 w-5 text-emerald-600 flex-shrink-0" />
+                  <span className="text-slate-700">Produits bio et conventionnels</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <CheckCircle className="h-5 w-5 text-emerald-600 flex-shrink-0" />
+                  <span className="text-slate-700">Exportation mondiale</span>
+                </div>
+              </div>
+              <Button asChild className="w-full bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white">
+                <Link to="/greentany-export">Découvrir Export</Link>
+              </Button>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -379,86 +435,8 @@ const AboutPage = () => {
       </section>
 
       {/* Sectors Section */}
-      <section className="py-24">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16 max-w-4xl mx-auto"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-800 mb-6">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-teal-600">Secteurs</span> d'activité
-            </h2>
-            <p className="text-xl text-slate-600 max-w-2xl mx-auto">
-              Nous intervenons dans de nombreux secteurs d'activité et proposons des expertises variées pour répondre à vos besoins.
-            </p>
-          </motion.div>
-          <FeaturesSectionWithHoverEffects />
-        </div>
-      </section>
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-16 max-w-4xl mx-auto"
-        >
-          <div className="inline-flex items-center gap-2 bg-blue-100 px-4 py-2 rounded-full mb-6">
-            <div className="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></div>
-            <span className="text-sm font-medium text-blue-700">Clients satisfaits</span>
-          </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-800 mb-6">
-            Ils nous font <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-teal-600">confiance</span>
-          </h2>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-            "Plus de 200 missions réalisées pour des entreprises leaders dans leurs secteurs"
-          </p>
-        </motion.div>
         {/* Clients Grid */}
-        <motion.div
-          className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-        >
-          {clients.map((client, index) => (
-            <motion.div
-              key={client.name}
-              variants={itemVariants}
-              whileHover="hover"
-            >
-              <Card className="h-full rounded-2xl overflow-hidden border border-slate-100 bg-white">
-                {/* Client Logo */}
-                <div className="relative h-40 bg-gradient-to-br from-blue-50 to-teal-50 flex items-center justify-center">
-                  <div className="absolute inset-0 bg-gradient-to-t from-white/80 to-transparent z-10"></div>
-                  <div className="w-24 h-24 rounded-full bg-white p-4 shadow-md flex items-center justify-center z-20">
-                    {client.image ? (
-                      <img 
-                        src={client.image} 
-                        alt={client.name} 
-                        className="w-full h-full object-contain"
-                      />
-                    ) : (
-                      <span className="text-3xl font-bold text-blue-600">
-                      {client.name.charAt(0)}
-                      </span>
-                    )}
-                  </div>
-                </div>
-                <CardContent className="p-6">
-                  <div className="flex flex-col items-center text-center">
-                    <h3 className="font-bold text-xl text-slate-800 mb-1">{client.name}</h3>
-                    <span className="text-sm text-slate-500 bg-slate-100 px-3 py-1 rounded-full mb-4">
-                      {client.category}
-                    </span>
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
-        </motion.div>
+        <References/>
 
       {/* CTA Section */}
       <section className="py-24">
@@ -506,7 +484,6 @@ const AboutPage = () => {
           </motion.div>
         </div>
       </section>
-      <Partners/>
     </div>
   );
 };

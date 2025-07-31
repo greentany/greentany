@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { MapPin, Clock, Phone, Mail, Map } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import Cta from '@/components/Cta';
 
 const contactInfo = [
   {
@@ -220,6 +221,16 @@ const ContactPage = () => {
           </div>
         </div>
       </section>
+
+      {/* CTA Section */}
+      <Cta 
+        title="Besoin d'un accompagnement personnalisé ?"
+        description="Notre équipe d'experts est prête à vous accompagner dans tous vos projets qualité et conformité"
+        primaryButtonText="Demander un devis"
+        primaryButtonLink="/contact"
+        secondaryButtonText="Appeler maintenant"
+        secondaryButtonLink="tel:+261342844951"
+      />
     </div>
   );
 };

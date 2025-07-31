@@ -49,7 +49,7 @@ const sections = [
   },
   {
     title: "Certifications",
-    links: certifications.map(cert => ({ name: cert, href: '/services' }))
+    links: certifications.map(cert => ({ name: cert.title, href: '/services' }))
   },
 ];
 
@@ -65,7 +65,7 @@ const legalLinks = [
 
 const Footer = () => {
   return (
-    <footer className="py-32 bg-card border-t">
+    <footer className="py-2 bg-card border-t">
       <div className="container mx-auto">
         <div className="flex w-full flex-col justify-between gap-10 lg:flex-row lg:items-start lg:text-left">
           <div className="flex w-full flex-col justify-between gap-6 lg:items-start">
@@ -73,7 +73,7 @@ const Footer = () => {
             <div className="flex items-center gap-2 lg:justify-start">
               <a href="/">
                 <img
-                  src="/lovable-uploads/5b1489c2-9ed5-4262-939a-2c0f47c3c36e.png"
+                  src="/logo.jpg"
                   alt="Greentany Consulting"
                   title="Greentany Consulting"
                   className="h-12"
