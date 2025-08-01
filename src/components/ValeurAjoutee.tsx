@@ -74,7 +74,7 @@ const ValeurAjoutee: React.FC = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl font-bold text-slate-800 mb-4">
-            Notre Valeur Ajoutée
+            Nos Avantages
           </h2>
           <p className="text-xl text-slate-600 max-w-3xl mx-auto">
             Découvrez nos deux pôles d'expertise qui font de Greentany un partenaire de confiance
