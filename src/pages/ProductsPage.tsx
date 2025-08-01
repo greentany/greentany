@@ -1,12 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Filter, Grid, List, Search, X, Leaf, Package, Award, Globe } from 'lucide-react';
+import { Filter, Grid, List, Search, X, Leaf, Package, Award, Globe, Shield, Users, CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { Separator } from '@/components/ui/separator';
 import Cta from '@/components/Cta';
+import { AnimatedCard } from '@/components/ui/animated-card';
+import { CardHeader, CardTitle } from '@/components/ui/card';
+import { Link, useSearchParams } from 'react-router-dom';
 
 const products = [
   // ÉPICES ET INGRÉDIENTS
@@ -168,12 +171,44 @@ const categories = [
   { id: 'epices', name: 'Épices et Ingrédients', icon: Leaf },
   { id: 'fruits', name: 'Fruits et Grains Secs', icon: Award },
 ];
+const values = [
+  {
+    icon: Users,
+    title: 'Relation pérenne avec les paysans',
+    description: 'Développement d\'un réseau de plusieurs milliers de paysans-partenaires',
+    features: ['Mise en place de groupements et coopératives autonomes', 'Accompagnement par nos agents de terrain', 'Bonnes Pratiques Agricoles'],
+    image: '/image41.jpg'
 
+  },
+  {
+    icon: Award,
+    title: 'Qualité des produits',
+    description: 'Production d\'épices et ingrédients de qualité',
+    features: ['Bonnes Pratiques d\'Hygiène', 'Itinéraires Techniques optimisés', 'Gestion de la qualité'],
+    image: '/image43.jpg'
+  },
+  {
+    icon: Shield,
+    title: 'Standards de qualité',
+    description: 'Respect des référentiels HACCP/ISO',
+    features: ['Management de la Qualité', 'Sécurité Produit', 'Certifications internationales'],
+    image: '/image42.jpg'
+  }
+];
 const ProductsPage = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [displayedProducts, setDisplayedProducts] = useState(9);
+
+  // Initialiser les filtres depuis les paramètres d'URL
+  useEffect(() => {
+    const categoryFromUrl = searchParams.get('category');
+    if (categoryFromUrl && ['all', 'epices', 'fruits'].includes(categoryFromUrl)) {
+      setSelectedCategory(categoryFromUrl);
+    }
+  }, [searchParams]);
 
   // Réinitialiser le compteur quand les filtres changent
   React.useEffect(() => {
@@ -205,6 +240,12 @@ const ProductsPage = () => {
 
   const handleCategoryChange = (category: string) => {
     setSelectedCategory(category);
+    // Mettre à jour les paramètres d'URL
+    if (category === 'all') {
+      setSearchParams({});
+    } else {
+      setSearchParams({ category });
+    }
   };
 
   const handleSearchChange = (value: string) => {
@@ -215,6 +256,7 @@ const ProductsPage = () => {
     setSearchTerm('');
     setSelectedCategory('all');
     setDisplayedProducts(9);
+    setSearchParams({});
   };
 
   const containerVariants = {
@@ -271,25 +313,37 @@ const ProductsPage = () => {
   );
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
-      <main className="container mx-auto px-4 py-8">
+    <div className="min-h-screen pt-20 bg-gradient-to-b from-slate-50 to-white">
+      <main className="container mx-auto">
         {/* Hero Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-center py-16"
+          className="relative py-16 overflow-hidden rounded-3xl mb-8"
         >
-          <div className="inline-flex items-center gap-2 bg-emerald-100 px-4 py-2 rounded-full mb-6">
-            <div className="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></div>
-            <span className="text-sm font-medium text-emerald-700">Produits d'exportation</span>
+          {/* Background Image */}
+          <div className="absolute inset-0">
+            <img 
+              src="/image42.jpg"
+              alt="Background"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-slate-900/70 via-emerald-900/40 to-slate-900/50"></div>
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold mb-6 text-slate-800">
-            Nos <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-green-600">Produits</span> Premium
-          </h1>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto mb-8">
-            Une production de qualité d'épices et ingrédients d'origine Madagascar. 
-            Découvrez notre sélection de produits locaux d'exception pour l'exportation internationale.
-          </p>
+          
+          <div className="relative z-10 text-center">
+            <div className="inline-flex items-center gap-2 bg-emerald-100/90 backdrop-blur-sm px-4 py-2 rounded-full mb-6">
+              <div className="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></div>
+              <span className="text-sm font-medium text-emerald-700">Produits d'exportation</span>
+            </div>
+            <h1 className="text-4xl md:text-5xl font-bold mb-6 text-white">
+              Nos <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 to-green-300">Produits</span> Premium
+            </h1>
+            <p className="text-xl text-slate-200 max-w-3xl mx-auto mb-8">
+              Une production de qualité d'épices et ingrédients d'origine Madagascar. 
+              Découvrez notre sélection de produits locaux d'exception pour l'exportation internationale.
+            </p>
+          </div>
         </motion.div>
 
         <div className="flex gap-8">
@@ -518,8 +572,124 @@ const ProductsPage = () => {
             </div>
           </motion.div>
         )}
-      </main>
 
+       
+      </main>
+      {/* Cta section */}
+      <section className="relative py-24 md:py-32 overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="/images1.jpg" 
+            alt="Background" 
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-emerald-900/80 to-green-900/80"></div>
+        </div>
+        <div className="container mx-auto px-4 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center max-w-4xl mx-auto"
+          >
+            <motion.h2 
+              className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+            >
+              Votre partenaire exportateur
+            </motion.h2>
+            <motion.p 
+              className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto mb-8 leading-relaxed"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4 }}
+            >
+              Depuis 2016, GreenTany export s'impose comme un producteur et grossiste d'Epices et Ingrédients biologiques et conventionnels, d'origine Madagascar. Nous combinons savoir-faire, passion et rigueur pour offrir à nos clients des produits d'une qualité irréprochable.
+            </motion.p>
+            <motion.div
+              className="mt-12"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.6 }}
+            >
+              <Link to="/contact">
+                <Button 
+                  variant="default" 
+                  size="lg" 
+                  className="bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-600 hover:to-green-700 text-white shadow-lg shadow-emerald-500/20 px-8 py-4 text-lg font-semibold"
+                >
+                  Rejoignez-nous !
+                </Button>
+              </Link>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+         {/* Valeurs Section */}
+      <section className="py-24 bg-gradient-to-br from-slate-50 to-emerald-50">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16 max-w-4xl mx-auto"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-800 mb-6">
+              POURQUOI CHOISIR <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-green-600">GREENTANY EXPORT?</span>
+            </h2>
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+              Une relation étroite et pérenne avec les paysans malgaches
+            </p>
+          </motion.div>
+          <motion.div
+            className="grid md:grid-cols-3 gap-8"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+          >
+            {values.map((value, index) => (
+              <motion.div
+                key={value.title}
+                variants={itemVariants}
+                whileHover="hover"
+              >
+                <AnimatedCard showImage={true} imageSrc={value.image} imageAlt={value.title}>
+                    <CardHeader className="p-0 mb-4">
+                      <div className="flex items-center gap-3">
+                        <div className="w-12 h-12 rounded-xl bg-emerald-100 flex items-center justify-center">
+                          <value.icon className="h-6 w-6 text-emerald-600" />
+                        </div>
+                        <CardTitle className="text-xl text-slate-800">{value.title}</CardTitle>
+                      </div>
+                      <p className="text-slate-600 mt-3">{value.description}</p>
+                    </CardHeader>
+                    <ul className="space-y-3">
+                      {value.features.map((feature, idx) => (
+                        <motion.li 
+                          key={idx}
+                          initial={{ opacity: 0, x: -20 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          viewport={{ once: true }}
+                          transition={{ delay: idx * 0.1 }}
+                          className="flex items-start gap-3"
+                        >
+                          <CheckCircle className="h-5 w-5 text-emerald-500 mt-0.5 flex-shrink-0" />
+                          <span className="text-slate-700">{feature}</span>
+                        </motion.li>
+                      ))}
+                    </ul>
+                </AnimatedCard>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
       {/* CTA Section */}
       <Cta 
         title="Besoin d'un devis personnalisé ?"

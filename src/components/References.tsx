@@ -1,6 +1,5 @@
 import { motion, Variants } from 'framer-motion';
 import { ScrollVelocity } from '@/components/ui/scroll-velocity';
-import Partners from './Partners';
 
 const References = () => {
   const clients = [
@@ -125,62 +124,8 @@ const References = () => {
             </ScrollVelocity>
           </div>
         </div>
-
-        {/* Stats Banner avec animations GSAP */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-          className="mt-16 rounded-3xl overflow-hidden shadow-2xl relative"
-        >
-          <div className="bg-gradient-to-r from-blue-600 via-teal-600 to-blue-700 p-8 md:p-12 relative overflow-hidden">
-            {/* Effet de particules en arrière-plan */}
-            <div className="absolute inset-0 opacity-10">
-              <div className="absolute top-4 left-4 w-4 h-4 bg-white rounded-full animate-pulse"></div>
-              <div className="absolute top-12 right-8 w-2 h-2 bg-white rounded-full animate-bounce"></div>
-              <div className="absolute bottom-8 left-12 w-3 h-3 bg-white rounded-full animate-ping"></div>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto relative z-10">
-              <motion.div 
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.1, duration: 0.6 }}
-                className="text-center stat-number"
-              >
-                <div className="text-5xl md:text-6xl font-bold text-white mb-2">200+</div>
-                <p className="text-blue-100 font-medium text-lg">Missions réalisées</p>
-              </motion.div>
-              
-              <motion.div 
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2, duration: 0.6 }}
-                className="text-center stat-number"
-              >
-                <div className="text-5xl md:text-6xl font-bold text-white mb-2">98%</div>
-                <p className="text-blue-100 font-medium text-lg">Clients satisfaits</p>
-              </motion.div>
-              
-              <motion.div 
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.3, duration: 0.6 }}
-                className="text-center stat-number"
-              >
-                <div className="text-5xl md:text-6xl font-bold text-white mb-2">15+</div>
-                <p className="text-blue-100 font-medium text-lg">Secteurs d'activité</p>
-              </motion.div>
-            </div>
-          </div>
-        </motion.div>
       </div>
       
-      <Partners/>
     </section>
   );
 };

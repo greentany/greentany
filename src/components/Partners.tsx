@@ -1,4 +1,5 @@
 import { Marquee } from "@/components/ui/marquee";
+import { motion } from "framer-motion";
 
 const partners = [
   { name: "Compagnie Fruitière", img: "/Image17.png" },
@@ -14,14 +15,21 @@ const partners = [
 
 export default function Partners() {
   return (
-    <section className="py-24 bg-gradient-to-b from-white to-slate-50">
+    <section className="py-12 bg-gradient-to-br from-slate-50 to-blue-50">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-slate-800 mb-6 text-center">
-          Nos partenaires
-        </h2>
-        <p className="text-lg text-slate-600 mb-10 text-center">
-          Nous travaillons avec les partenaires suivants :
-        </p>
+      <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16 max-w-4xl mx-auto"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-800 mb-6">
+            Nos <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-teal-600">Partenaires</span>
+            </h2>
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+            Nous travaillons avec les partenaires suivants :
+            </p>
+          </motion.div>
         <Marquee pauseOnHover speed={20}>
           {partners.map((partner, idx) => (
             <div key={idx} className="flex flex-col items-center mx-8">

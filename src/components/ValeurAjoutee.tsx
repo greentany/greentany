@@ -1,239 +1,314 @@
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { 
   FaShieldAlt, 
   FaGlobe, 
-  FaUsers, 
-  FaChartLine, 
-  FaAward, 
+  FaChevronDown, 
+  FaChevronUp,
+  FaAward,
+  FaUsers,
+  FaChartLine,
   FaHandshake,
-  FaLightbulb,
-  FaRocket
+  FaRocket,
+  FaLightbulb
 } from 'react-icons/fa';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
+import { mainServices } from '@/lib/servicesData';
 
-const ValeurAjoutee = () => {
-  const consultingFeatures = [
-    {
-      icon: FaShieldAlt,
-      title: "Maîtrise des référentiels QHSE",
-      description: "ISO 9001, ISO 45001, ISO 14001, SA8000, ISO 26000, BSCI, SMETA, HACCP… pour une approche pratique et efficace."
-    },
-    {
-      icon: FaAward,
-      title: "Expertise métiers spécifiques",
-      description: "ISO 22716 (cosmétique), ISO 18295 (centres de relation clients), ISO 20252 (enquêtes), GOTS (textile bio), Human For Client (RSE call centers), ISO 27001 (sécurité informatique), FSSC 22000 (sécurité alimentaire)…"
-    },
-    {
-      icon: FaUsers,
-      title: "Excellence en audit",
-      description: "Missions réalisées dans les conditions des audits de certification ISO. Consultants certifiés IRCA et auditeurs pour des organismes de certification."
-    },
-    {
-      icon: FaGlobe,
-      title: "Interventions multisectorielles",
-      description: "Industrie, BTP, textile, BPO, banques-assurances, agroalimentaire, laboratoires, services… à Madagascar et dans l'Océan Indien."
-    },
-    {
-      icon: FaChartLine,
-      title: "Expérience avec les bailleurs internationaux",
-      description: "Suivi-évaluation efficace des projets sociaux à Madagascar."
-    },
-    {
-      icon: FaHandshake,
-      title: "Formation professionnelle reconnue",
-      description: "Plus de 1 500 stagiaires formés, avec des outils et techniques adaptés pour des sessions efficaces."
-    }
-  ];
+// Map icon string to React component
+const iconMap = {
+  FaShieldAlt,
+  FaGlobe,
+  FaAward,
+  FaUsers,
+  FaChartLine,
+  FaHandshake,
+  FaRocket,
+  FaLightbulb
+};
+
+const ValeurAjoutee: React.FC = () => {
+  const [expandedConsulting, setExpandedConsulting] = useState<number | null>(null);
+  const [expandedExport, setExpandedExport] = useState<number | null>(null);
+
+  const toggleConsulting = (index: number) => {
+    setExpandedConsulting(expandedConsulting === index ? null : index);
+  };
+
+  const toggleExport = (index: number) => {
+    setExpandedExport(expandedExport === index ? null : index);
+  };
 
   const exportFeatures = [
     {
-      icon: FaRocket,
-      title: "Nos forces",
-      description: "Nous combinons tradition et innovation pour offrir des produits à la hauteur des attentes de nos clients."
-    },
-    {
-      icon: FaLightbulb,
-      title: "Expertise sectorielle",
-      description: "Connaissance approfondie des produits tropicaux et de leurs marchés."
-    },
-    {
-      icon: FaUsers,
-      title: "Réseau solide",
-      description: "Partenariats stratégiques avec des producteurs locaux et des acteurs logistiques fiables."
-    },
-    {
       icon: FaGlobe,
-      title: "Capacité d'adaptation",
-      description: "Réponse agile aux exigences spécifiques des marchés internationaux."
+      title: 'Épices Premium',
+      description: 'Sélection rigoureuse des meilleures épices d\'Afrique de l\'Ouest, garantissant qualité et authenticité.'
+    },
+    {
+      icon: FaAward,
+      title: 'Certifications Internationales',
+      description: 'Toutes nos épices répondent aux standards internationaux avec certifications HACCP, ISO et Bio.'
+    },
+    {
+      icon: FaHandshake,
+      title: 'Partenariats Durables',
+      description: 'Collaboration directe avec les producteurs locaux pour un commerce équitable et durable.'
+    },
+    {
+      icon: FaRocket,
+      title: 'Logistique Optimisée',
+      description: 'Chaîne logistique complète de la récolte à l\'exportation avec traçabilité totale.'
     }
   ];
 
   return (
-    <section className="py-24 bg-gradient-to-br from-slate-50 via-blue-50 to-teal-50 relative overflow-hidden">
-      {/* Material Design Background Layers */}
-      <div className="absolute top-0 left-0 w-full h-full">
-        <div className="absolute top-20 left-10 w-64 h-64 bg-blue-400/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-10 w-80 h-80 bg-teal-400/10 rounded-full blur-3xl"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-emerald-400/5 rounded-full blur-3xl"></div>
-      </div>
-      
-      <div className="container mx-auto px-4 relative z-10">
-        {/* Material Design Header */}
+    <section className="py-20 bg-gradient-to-br from-slate-50 to-blue-50">
+      <div className="container mx-auto px-4">
+        {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <motion.div 
-            initial={{ scale: 0 }}
-            whileInView={{ scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-            className="inline-flex items-center gap-3 bg-white px-6 py-3 rounded-full mb-6 shadow-lg"
-          >
-            <div className="w-3 h-3 rounded-full bg-gradient-to-r from-blue-600 to-teal-600"></div>
-            <span className="text-sm font-semibold text-slate-700">Valeur Ajoutée</span>
-          </motion.div>
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.3 }}
-            className="text-4xl md:text-5xl font-bold text-slate-800 mb-6"
-          >
-            Pourquoi choisir <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-teal-600">Greentany</span> ?
-          </motion.h2>
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.4 }}
-            className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed"
-          >
-            Notre double expertise en <span className="font-semibold text-blue-700">Consulting</span> et <span className="font-semibold text-emerald-700">Export</span> vous garantit un accompagnement sur-mesure, adapté à vos enjeux et à votre secteur.
-          </motion.p>
+          <h2 className="text-4xl font-bold text-slate-800 mb-4">
+            Notre Valeur Ajoutée
+          </h2>
+          <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+            Découvrez nos deux pôles d'expertise qui font de Greentany un partenaire de confiance
+          </p>
         </motion.div>
 
-        {/* Material Design Cards Layout */}
-        <div className="relative">
-          {/* Consulting Section - Material Design Card */}
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="relative mb-16"
-          >
-            <div className="bg-white rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-2">
-              <div className="p-8">
-                {/* Material Design Header */}
-                <div className="flex items-center gap-6 mb-8">
-                  <div className="w-20 h-20 rounded-2xl bg-gradient-to-r from-blue-500 to-blue-600 flex items-center justify-center shadow-lg transform hover:scale-110 transition-transform duration-300">
-                    <FaShieldAlt className="h-10 w-10 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-3xl font-bold text-slate-800">Greentany Consulting</h3>
-                    <p className="text-blue-600 font-medium text-lg">Services de Conseil Expert</p>
-                  </div>
-                </div>
-                
-                {/* Material Design Grid */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                  {consultingFeatures.map((feature, index) => (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: 0.3 + index * 0.1 }}
-                      whileHover={{ y: -5 }}
-                      className="group"
-                    >
-                      <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 border border-blue-200/50">
-                        <div className="flex items-start gap-4">
-                          <div className="w-12 h-12 rounded-xl bg-gradient-to-r from-blue-500 to-blue-600 flex items-center justify-center shadow-md group-hover:shadow-lg transition-shadow duration-300">
-                            <feature.icon className="h-6 w-6 text-white" />
-                          </div>
-                          <div>
-                            <h4 className="font-bold text-slate-800 mb-2 text-lg">{feature.title}</h4>
-                            <p className="text-slate-600 text-sm leading-relaxed">{feature.description}</p>
-                          </div>
-                        </div>
+        {/* Consulting Section - Image Left, Content Right */}
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 }}
+          className="mb-20"
+        >
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Image Left */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+              className="relative"
+            >
+              <div className="relative">
+                <img
+                  src="/african-office.jpg"
+                  alt="Greentany Consulting - Services de Conseil"
+                  className="w-full h-96 object-cover rounded-3xl shadow-2xl"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-blue-900/20 to-transparent rounded-3xl"></div>
+                <div className="absolute bottom-6 left-6">
+                  <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-4 shadow-lg">
+                    <div className="flex items-center gap-3">
+                      <div className="w-12 h-12 rounded-xl bg-gradient-to-r from-blue-500 to-blue-600 flex items-center justify-center">
+                        <FaShieldAlt className="h-6 w-6 text-white" />
                       </div>
-                    </motion.div>
-                  ))}
-                </div>
-                
-                {/* Material Design CTA */}
-                <div className="mt-8 pt-6 border-t border-slate-200">
-                  <Button asChild className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-lg font-semibold">
-                    <Link to="/greentany-consulting">Découvrir Consulting</Link>
-                  </Button>
+                      <div>
+                        <h4 className="font-bold text-slate-800">Greentany Consulting</h4>
+                        <p className="text-blue-600 text-sm">Expert en Conformité</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </motion.div>
+            </motion.div>
 
-          {/* Export Section - Material Design Card */}
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.4 }}
-            className="relative lg:ml-auto lg:w-4/5"
-          >
-            <div className="bg-white rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-2">
-              <div className="p-8">
-                {/* Material Design Header */}
-                <div className="flex items-center gap-6 mb-8">
-                  <div className="w-20 h-20 rounded-2xl bg-gradient-to-r from-emerald-500 to-emerald-600 flex items-center justify-center shadow-lg transform hover:scale-110 transition-transform duration-300">
-                    <FaGlobe className="h-10 w-10 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-3xl font-bold text-slate-800">Greentany Export</h3>
-                    <p className="text-emerald-600 font-medium text-lg">Exportation d'Épices Premium</p>
-                  </div>
-                </div>
-                
-                {/* Material Design List */}
-                <div className="space-y-6">
-                  {exportFeatures.map((feature, index) => (
+            {/* Content Right */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4 }}
+              className="space-y-6"
+            >
+              <div className="mb-8">
+                <h3 className="text-3xl font-bold text-slate-800 mb-2">Greentany Consulting</h3>
+                <p className="text-blue-600 font-medium text-lg">Services de Conseil Expert</p>
+              </div>
+
+              {/* Collapsible Items */}
+              <div className="space-y-4">
+                {mainServices.map((service, index) => {
+                  // If icon is a string, map to React component
+                  const Icon = typeof service.icon === 'string' ? (iconMap[service.icon as keyof typeof iconMap] || FaShieldAlt) : service.icon;
+                  return (
                     <motion.div
                       key={index}
-                      initial={{ opacity: 0, x: 20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ delay: 0.5 + index * 0.1 }}
-                      whileHover={{ y: -5 }}
-                      className="group"
+                      className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-slate-200"
                     >
-                      <div className="bg-gradient-to-br from-emerald-50 to-emerald-100 p-6 rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 border border-emerald-200/50">
-                        <div className="flex items-start gap-4">
-                          <div className="w-12 h-12 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-600 flex items-center justify-center shadow-md group-hover:shadow-lg transition-shadow duration-300">
-                            <feature.icon className="h-6 w-6 text-white" />
+                      <button
+                        onClick={() => toggleConsulting(index)}
+                        className="w-full p-6 text-left flex items-center justify-between hover:bg-slate-50 transition-colors duration-200 rounded-2xl"
+                      >
+                        <div className="flex items-center gap-4">
+                          <div className="w-10 h-10 rounded-xl bg-gradient-to-r from-blue-500 to-blue-600 flex items-center justify-center">
+                            <Icon className="h-5 w-5 text-white" />
                           </div>
-                          <div>
-                            <h4 className="font-bold text-slate-800 mb-2 text-lg">{feature.title}</h4>
-                            <p className="text-slate-600 text-sm leading-relaxed">{feature.description}</p>
-                          </div>
+                          <h4 className="font-bold text-slate-800 text-lg">{service.title}</h4>
                         </div>
-                      </div>
+                        <div className="text-blue-500">
+                          {expandedConsulting === index ? (
+                            <FaChevronUp className="h-5 w-5" />
+                          ) : (
+                            <FaChevronDown className="h-5 w-5" />
+                          )}
+                        </div>
+                      </button>
+                      {expandedConsulting === index && (
+                        <motion.div
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: "auto" }}
+                          transition={{ duration: 0.3 }}
+                          className="px-6 pb-6"
+                        >
+                          <div className="space-y-4">
+                            <p className="text-slate-600 leading-relaxed">{service.description}</p>
+                            <div>
+                              <h5 className="font-semibold text-slate-800 mb-2">Nos services incluent :</h5>
+                              <ul className="space-y-2">
+                                {service.features.map((feature, featureIndex) => (
+                                  <li key={featureIndex} className="flex items-start gap-2">
+                                    <div className="w-2 h-2 rounded-full bg-blue-500 mt-2 flex-shrink-0"></div>
+                                    <span className="text-slate-600 text-sm">{feature}</span>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          </div>
+                        </motion.div>
+                      )}
                     </motion.div>
-                  ))}
-                </div>
-                
-                {/* Material Design CTA */}
-                <div className="mt-8 pt-6 border-t border-slate-200">
-                  <Button asChild className="bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-lg font-semibold">
-                    <Link to="/greentany-export">Découvrir Export</Link>
-                  </Button>
+                  );
+                })}
+              </div>
+
+              {/* CTA Button */}
+              <div className="pt-6">
+                <Button asChild className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-lg font-semibold">
+                  <Link to="/greentany-consulting">Découvrir Consulting</Link>
+                </Button>
+              </div>
+            </motion.div>
+          </div>
+        </motion.div>
+
+        {/* Export Section - Content Left, Image Right */}
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.6 }}
+          className="mb-20"
+        >
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Content Left */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.7 }}
+              className="space-y-6 lg:order-1"
+            >
+              <div className="mb-8">
+                <h3 className="text-3xl font-bold text-slate-800 mb-2">Greentany Export</h3>
+                <p className="text-emerald-600 font-medium text-lg">Exportation d'Épices Premium</p>
+              </div>
+
+              {/* Collapsible Items */}
+              <div className="space-y-4">
+                {exportFeatures.map((feature, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.8 + index * 0.1 }}
+                    className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-slate-200"
+                  >
+                    <button
+                      onClick={() => toggleExport(index)}
+                      className="w-full p-6 text-left flex items-center justify-between hover:bg-slate-50 transition-colors duration-200 rounded-2xl"
+                    >
+                      <div className="flex items-center gap-4">
+                        <div className="w-10 h-10 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-600 flex items-center justify-center">
+                          <feature.icon className="h-5 w-5 text-white" />
+                        </div>
+                        <h4 className="font-bold text-slate-800 text-lg">{feature.title}</h4>
+                      </div>
+                      <div className="text-emerald-500">
+                        {expandedExport === index ? (
+                          <FaChevronUp className="h-5 w-5" />
+                        ) : (
+                          <FaChevronDown className="h-5 w-5" />
+                        )}
+                      </div>
+                    </button>
+                    {expandedExport === index && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        transition={{ duration: 0.3 }}
+                        className="px-6 pb-6"
+                      >
+                        <p className="text-slate-600 leading-relaxed">{feature.description}</p>
+                      </motion.div>
+                    )}
+                  </motion.div>
+                ))}
+              </div>
+
+              {/* CTA Button */}
+              <div className="pt-6">
+                <Button asChild className="bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-lg font-semibold">
+                  <Link to="/greentany-export">Découvrir Export</Link>
+                </Button>
+              </div>
+            </motion.div>
+
+            {/* Image Right */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.9 }}
+              className="relative lg:order-2"
+            >
+              <div className="relative">
+                <img
+                  src="/african-office-2.jpg"
+                  alt="Greentany Export - Exportation d'Épices"
+                  className="w-full h-96 object-cover rounded-3xl shadow-2xl"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-emerald-900/20 to-transparent rounded-3xl"></div>
+                <div className="absolute bottom-6 right-6">
+                  <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-4 shadow-lg">
+                    <div className="flex items-center gap-3">
+                      <div className="w-12 h-12 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-600 flex items-center justify-center">
+                        <FaGlobe className="h-6 w-6 text-white" />
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-slate-800">Greentany Export</h4>
+                        <p className="text-emerald-600 text-sm">Épices Premium</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </motion.div>
-        </div>
+            </motion.div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -35,20 +35,42 @@ const ContactPage = () => {
   return (
     <div className="min-h-screen pt-20 bg-gradient-to-b from-[#f8fafc] via-[#f4f7fb] to-white">
       {/* Hero Section */}
-      <section className="py-24 bg-gradient-to-r from-[#e0e7ff] via-[#f1f5f9] to-[#f8fafc]">
-        <div className="container mx-auto px-4">
+      <section className="relative py-24 md:py-32 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 to-blue-900/95 z-0"></div>
+        <div className="absolute inset-0 z-0 opacity-20" style={{
+          backgroundImage: "url('/african-office-1.jpg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center"
+        }}></div>
+        
+        <div className="container mx-auto px-4 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: 'easeOut' }}
-            className="text-center"
+            className="text-center max-w-4xl mx-auto"
           >
-            <h1 className="text-5xl lg:text-7xl font-extrabold mb-6 text-gray-900 tracking-tight drop-shadow-sm">
+            <div className="inline-flex items-center gap-2 bg-blue-100/90 backdrop-blur-sm px-4 py-2 rounded-full mb-6">
+              <div className="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></div>
+              <span className="text-sm font-medium text-blue-700">Contactez-nous</span>
+            </div>
+            
+            <motion.h1 
+              className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.2 }}
+            >
               Contactez-nous
-            </h1>
-            <p className="text-2xl lg:text-3xl max-w-2xl mx-auto opacity-80 text-gray-700 font-medium">
+            </motion.h1>
+            
+            <motion.p 
+              className="text-xl text-white/90 max-w-3xl mx-auto"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.4 }}
+            >
               Notre équipe d'experts est à votre disposition pour répondre à toutes vos questions et vous accompagner dans vos projets qualité
-            </p>
+            </motion.p>
           </motion.div>
         </div>
       </section>
@@ -212,9 +234,6 @@ const ContactPage = () => {
                       <span className="text-gray-400">Carte interactive disponible bientôt</span>
                     </div>
                   </div>
-                  <Button variant="hero" className="w-full mt-4">
-                    Nous contacter
-                  </Button>
                 </CardContent>
               </Card>
             </motion.div>

@@ -6,6 +6,7 @@ import Cta from '@/components/Cta';
 import { Feature73 } from '@/components/ui/feature-73';
 import EngagementConsulting from '@/components/EngagementConsulting';
 import AboutConsulting from '@/components/AboutConsulting';
+import References from '@/components/References';
 
 const GreentanyConsultingPage = () => {
 
@@ -117,9 +118,6 @@ const GreentanyConsultingPage = () => {
       
       {/* About Consulting Section */}
       <AboutConsulting />
-      
-      {/* Engagements section */}
-      <EngagementConsulting />
       {/* Services détaillés avec nouveau design */}
       <Feature73
         features={mainServices.map((service, index) => ({
@@ -133,6 +131,9 @@ const GreentanyConsultingPage = () => {
       
       {/* Engagements section */}
       <EngagementConsulting />
+      <div id="references-section">
+        <References/>
+        </div>
       {/* Notre processus */}
       <section className="py-24 bg-gradient-to-br from-slate-50 to-blue-50">
         <div className="container mx-auto px-4">
@@ -191,4 +192,4 @@ const GreentanyConsultingPage = () => {
   );
 };
 
-export default GreentanyConsultingPage;
+export default GreentanyConsultingPage; 

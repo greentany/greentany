@@ -49,7 +49,7 @@ export const Feature73 = ({
         <div className="grid gap-8 md:grid-cols-2 lg:gap-12">
           {features[0] && (
             <div className="md:col-span-2">
-              <div className="relative overflow-hidden rounded-2xl border-2 border-transparent bg-gradient-to-r from-emerald-400 via-blue-500 to-emerald-400 p-[2px] animate-gradient-shift">
+              <div className="relative overflow-hidden rounded-2xl bg-white/30 backdrop-blur-md shadow-lg">
                 <div className="bg-white rounded-2xl p-8">
                   <div className="grid md:grid-cols-2 gap-8 items-center">
                     <div className="relative">
@@ -103,7 +103,7 @@ export const Feature73 = ({
             const IconComponent = icons[index % icons.length];
             
             return (
-              <div key={feature.id} className="relative overflow-hidden rounded-2xl border-2 border-transparent bg-gradient-to-r from-emerald-400 via-blue-500 to-emerald-400 p-[2px] animate-gradient-shift">
+              <div key={feature.id} className="relative overflow-hidden rounded-2xl bg-white/30 backdrop-blur-md shadow-lg">
                 <div className="bg-white rounded-2xl p-6 h-full">
                   <div className="space-y-4">
                     <div className="relative">

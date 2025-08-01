@@ -1,160 +1,212 @@
+import React from 'react';
 import { motion } from 'framer-motion';
-import { 
-  FaShieldAlt, 
-  FaLeaf, 
-  FaHeart, 
-  FaGlobe, 
-  FaUsers, 
-  FaGraduationCap 
-} from 'react-icons/fa';
+import { FaShieldAlt, FaUsers, FaChartLine, FaAward } from 'react-icons/fa';
+import References from './References';
 
-const AboutConsulting = () => {
-  const expertiseAreas = [
-    {
-      icon: FaShieldAlt,
-      title: "Qualité",
-      description: "Systèmes de management de la qualité"
-    },
-    {
-      icon: FaLeaf,
-      title: "Environnement",
-      description: "Gestion environnementale et développement durable"
-    },
-    {
-      icon: FaHeart,
-      title: "Santé & Sécurité",
-      description: "Protection de la santé et sécurité au travail"
-    },
-    {
-      icon: FaGlobe,
-      title: "RSE",
-      description: "Responsabilité sociétale des entreprises"
-    },
-    {
-      icon: FaUsers,
-      title: "Accompagnement",
-      description: "Conseil et assistance technique personnalisée"
-    },
-    {
-      icon: FaGraduationCap,
-      title: "Formation",
-      description: "Formation QHSE sur mesure"
+const AboutConsulting: React.FC = () => {
+  const scrollToReferences = () => {
+    const element = document.getElementById('references-section');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
     }
-  ];
+  };
 
   return (
-    <section className="py-24 bg-gradient-to-br from-slate-100 to-slate-200 relative overflow-hidden">
-      {/* Neumorphic background elements */}
-      <div className="absolute inset-0">
-        <div className="absolute top-20 left-20 w-64 h-64 bg-white/20 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-20 w-80 h-80 bg-white/10 rounded-full blur-3xl"></div>
-      </div>
-      
-      <div className="container mx-auto px-4 relative z-10">
+    <section className="py-20 bg-gradient-to-br from-slate-50 to-blue-50">
+      <div className="container mx-auto px-4">
+        {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16 max-w-4xl mx-auto"
+          className="text-center mb-16"
         >
-          <motion.div 
-            initial={{ scale: 0 }}
-            whileInView={{ scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-            className="inline-flex items-center gap-3 bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full mb-8 shadow-[inset_0_2px_4px_rgba(0,0,0,0.1)] border border-white/50"
-          >
-            <div className="w-3 h-3 rounded-full bg-gradient-to-r from-slate-600 to-slate-700"></div>
-            <span className="text-sm font-semibold text-slate-700">Depuis 2008</span>
-          </motion.div>
-          
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.3 }}
-            className="text-4xl md:text-5xl font-bold text-slate-800 mb-8"
-          >
-            À propos de <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-600 to-slate-700">Greentany Consulting</span>
-          </motion.h2>
-          
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.4 }}
-            className="text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed mb-8"
-          >
-            Créer depuis 2008, GREENTANY Consulting est un cabinet de conseil spécialisé dans le domaine:
-          </motion.p>
-           {/* Neumorphic expertise cards */}
-        <div className="grid py-10 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {expertiseAreas.map((area, index) => (
+          <h2 className="text-4xl font-bold text-slate-800 mb-4">
+            À Propos de Greentany Consulting
+          </h2>
+          <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+            Votre partenaire de confiance pour la conformité et la qualité
+          </p>
+        </motion.div>
+
+        {/* First Section - Image Left, Content Right */}
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 }}
+          className="mb-20"
+        >
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Image Left */}
             <motion.div
-              key={area.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.6 + index * 0.1 }}
-              whileHover={{ y: -5 }}
-              className="group"
+              transition={{ delay: 0.3 }}
+              className="relative"
             >
-              <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-[inset_0_2px_4px_rgba(0,0,0,0.1)] border border-white/50 hover:shadow-[inset_0_4px_8px_rgba(0,0,0,0.15)] transition-all duration-300">
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="w-16 h-16 rounded-full  transition-all duration-300">
-                    <area.icon className="h-8 w-8 text-primary" />
+              <div className="relative">
+                <img
+                  src="/african-office.jpg"
+                  alt="Greentany Consulting - Services de Conseil"
+                  className="w-full h-96 object-cover rounded-3xl shadow-2xl"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-blue-900/20 to-transparent rounded-3xl"></div>
+                <div className="absolute bottom-6 left-6">
+                  <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-4 shadow-lg">
+                    <div className="flex items-center gap-3">
+                      <div className="w-12 h-12 rounded-xl bg-gradient-to-r from-blue-500 to-blue-600 flex items-center justify-center">
+                        <FaShieldAlt className="h-6 w-6 text-white" />
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-slate-800">Expert en Conformité</h4>
+                        <p className="text-blue-600 text-sm">Depuis 2008</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Content Right */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4 }}
+              className="space-y-6"
+            >
+              <div>
+                <h3 className="text-3xl font-bold text-slate-800 mb-4">
+                  Notre Mission
+                </h3>
+                <p className="text-lg text-slate-600 leading-relaxed">
+                  Nous proposons aux organisations de toute taille et de tout secteur, du conseil, de l'accompagnement, de l'assistance technique, de l'audit et de la formation QHSE afin de les aider à se construire sur le long terme, et se projeter dans un avenir jalonné de succès.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-xl bg-gradient-to-r from-blue-500 to-blue-600 flex items-center justify-center flex-shrink-0">
+                    <FaUsers className="h-6 w-6 text-white" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-primary">{area.title}</h3>
-                    <p className="text-slate-600 text-sm">{area.description}</p>
+                    <h4 className="font-bold text-slate-800 mb-2">Accompagnement Personnalisé</h4>
+                    <p className="text-slate-600 text-sm">Solutions sur mesure adaptées à vos besoins spécifiques</p>
                   </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-xl bg-gradient-to-r from-blue-500 to-blue-600 flex items-center justify-center flex-shrink-0">
+                    <FaChartLine className="h-6 w-6 text-white" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-slate-800 mb-2">Expertise Sectorielle</h4>
+                    <p className="text-slate-600 text-sm">Connaissance approfondie de multiples secteurs d'activité</p>
+                  </div>
+                </div>
+                <button
+                    onClick={scrollToReferences}
+                    className="inline-block bg-gradient-to-r from-emerald-500 to-emerald-600 text-white font-semibold px-5 py-2 rounded-full shadow-lg hover:from-emerald-600 hover:to-emerald-700 transition-colors duration-200"
+                  >
+                    Découvrir nos clients
+                  </button>
+              </div>
+            </motion.div>
+            
+          </div>
+        </motion.div>
+
+        {/* Second Section - Content Left, Image Right */}
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.6 }}
+          className="mb-20"
+        >
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Content Left */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.7 }}
+              className="space-y-6 lg:order-1"
+            >
+              <div>
+                <h3 className="text-3xl font-bold text-slate-800 mb-4">
+                  Notre Expérience
+                </h3>
+                <p className="text-lg text-slate-600 leading-relaxed">
+                  Avec plus de 200+ clients accompagnés, Qualinove est un partenaire reconnu dans des secteurs variés : industrie, santé, médico-social, énergie, environnement, collectivités, agroalimentaire, bâtiment, transport, services, banque, assurance, IT, éducation,… Nous intervenons auprès de TPE, PME, ETI et grands comptes, en personnalisant chaque mission pour répondre aux réalités et enjeux spécifiques de nos clients.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-600 flex items-center justify-center flex-shrink-0">
+                    <FaAward className="h-6 w-6 text-white" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-slate-800 mb-2">200+ Clients</h4>
+                    <p className="text-slate-600 text-sm">Une expertise reconnue auprès de nombreux secteurs</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-600 flex items-center justify-center flex-shrink-0">
+                    <FaShieldAlt className="h-6 w-6 text-white" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-slate-800 mb-2">Multi-Sectoriel</h4>
+                    <p className="text-slate-600 text-sm">Intervention dans tous types d'organisations</p>
+                  </div>
+                </div>
+                <button
+                    onClick={scrollToReferences}
+                    className="inline-block bg-gradient-to-r from-emerald-500 to-emerald-600 text-white font-semibold px-5 py-2 rounded-full shadow-lg hover:from-emerald-600 hover:to-emerald-700 transition-colors duration-200"
+                  >
+                    Découvrir nos clients
+                  </button>
+              </div>
+              
+            </motion.div>
+
+            {/* Image Right */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.8 }}
+              className="relative lg:order-2"
+            >
+              <div className="relative">
+                <img
+                  src="/african-office-2.jpg"
+                  alt="Greentany Consulting - Expertise Multi-Sectorielle"
+                  className="w-full h-96 object-cover rounded-3xl shadow-2xl"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-emerald-900/20 to-transparent rounded-3xl"></div>
+                <div className="absolute bottom-6 right-6">
+                  <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-4 shadow-lg">
+                    <div className="flex items-center gap-3">
+                      <div className="w-12 h-12 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-600 flex items-center justify-center">
+                        <FaAward className="h-6 w-6 text-white" />
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-slate-800">200+ Clients</h4>
+                        <p className="text-emerald-600 text-sm">Expertise Reconnue</p>
+                      </div>
+                    </div>
+                  </div>
+                  
                 </div>
                 
               </div>
+              
             </motion.div>
-          ))}
-        </div>
-          
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.5 }}
-            className="text-lg text-slate-600 max-w-4xl mx-auto leading-relaxed"
-          >
-            Nous proposons aux organisations de toute taille et de tout secteur, du conseil, de l'accompagnement, de l'assistance technique, de l'audit et de la formation QHSE afin de les aider à se construire sur le long terme, et se projeter dans un avenir jalonné de succès.
-          </motion.p>
-        </motion.div>
-
-       
-
-        {/* Neumorphic stats section */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.8 }}
-          className="mt-16"
-        >
-          <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-[inset_0_2px_4px_rgba(0,0,0,0.1)] border border-white/50">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-              <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-slate-800 mb-2">15+</div>
-                <div className="text-slate-600 font-medium">Années d'expérience</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-slate-800 mb-2">200+</div>
-                <div className="text-slate-600 font-medium">Missions réalisées</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-slate-800 mb-2">50+</div>
-                <div className="text-slate-600 font-medium">Clients satisfaits</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-slate-800 mb-2">100%</div>
-                <div className="text-slate-600 font-medium">Accompagnement</div>
-              </div>
-            </div>
           </div>
         </motion.div>
       </div>

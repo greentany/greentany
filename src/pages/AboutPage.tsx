@@ -143,7 +143,7 @@ const AboutPage = () => {
   ];
 
   return (
-    <div className="min-h-screen pt-8 bg-gradient-to-b from-slate-50 to-white">
+    <div className="min-h-screen pt-20 bg-gradient-to-b from-slate-50 to-white">
       {/* Hero Section */}
       <section className="relative py-24 md:py-32 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-blue-900/95 to-teal-900/95 z-0"></div>
