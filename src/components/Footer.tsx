@@ -1,14 +1,14 @@
 import { motion } from 'framer-motion';
-import { FaFacebook, FaLinkedin } from 'react-icons/fa';
+import { FaFacebook, FaLinkedin, FaWhatsapp } from 'react-icons/fa';
 import { Phone, Mail, MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { mainServices } from '@/lib/servicesData';
 
 const navItems = [
   { label: 'Accueil', href: '/' },
-  { label: 'Nos services', href: '/services' },
-  { label: 'Nos produits', href: '/produits' },
-  { label: 'À propos', href: '/apropos' },
+  { label: 'Le cabinet', href: '/cabinet' },
+  { label: 'Nos produit', href: '/produits' },
+  { label: 'Références', href: '/references' },
   { label: 'Contact', href: '/contact' },
 ];
 
@@ -17,14 +17,28 @@ const contactInfo = [
     icon: <Phone className="h-5 w-5 text-primary mt-0.5" />,
     label: (
       <div>
-        <p className="text-sm text-foreground font-medium">+261 34 28 449 51</p>
-        <p className="text-sm text-foreground font-medium">+261 32 04 463 65</p>
+        <a href="tel:+261342844951" className="text-sm text-foreground font-medium hover:underline">+261 34 28 449 51</a>
+        <p className="text-sm text-foreground font-medium">
+          <a href="tel:+261320446365" className="hover:underline">+261 32 04 463 65</a>
+        </p>
       </div>
     )
   },
   {
+    icon: <FaWhatsapp className="h-5 w-5 text-green-600 mt-0.5" />,
+    label: (
+      <a href="https://wa.me/261342844951" target="_blank" rel="noopener noreferrer" className="text-sm text-foreground font-medium hover:underline">
+        +261 34 28 449 51
+      </a>
+    )
+  },
+  {
     icon: <Mail className="h-5 w-5 text-primary mt-0.5" />,
-    label: <p className="text-sm text-foreground font-medium">contact@greentany.com</p>
+    label: (
+      <a href="mailto:contact@greentany.com" className="text-sm text-foreground font-medium hover:underline">
+        contact@greentany.com
+      </a>
+    )
   },
   {
     icon: <MapPin className="h-5 w-5 text-primary mt-0.5" />,
@@ -44,10 +58,6 @@ const sections = [
     links: navItems.map(item => ({ name: item.label, href: item.href }))
   },
   {
-    title: "Nos Services",
-    links: mainServices.map(service => ({ name: service.title, href: '/services' }))
-  },
-  {
     title: "Nos Produits",
     links: [
       { name: 'Tous les produits', href: '/produits' },
@@ -65,12 +75,10 @@ const legalLinks = [
 const Footer = () => {
   return (
     <footer className="py-12 bg-white relative overflow-hidden">
-      {/* Animated Radial Gradient Background */}
+      {/* Background image + animated gradients */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-green-400/30 via-blue-400/20 to-transparent animate-gradient-pulse"></div>
-        <div className="absolute inset-0 bg-gradient-to-tl from-blue-400/30 via-green-400/20 to-transparent animate-gradient-pulse" style={{ animationDelay: '1.5s' }}></div>
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-gradient-radial from-green-300/40 to-transparent animate-gradient-pulse"></div>
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-gradient-radial from-blue-300/40 to-transparent animate-gradient-pulse" style={{ animationDelay: '0.75s' }}></div>
+        <div className="absolute inset-0 bg-[url('/footerbg.png')] bg-cover bg-center opacity-40"></div>
+        
       </div>
       
       <div className="container mx-auto relative z-10">
