@@ -24,7 +24,7 @@ const contactInfo = [
   },
   {
     icon: <Mail className="h-5 w-5 text-primary mt-0.5" />,
-    label: <p className="text-sm text-foreground font-medium">greentanyconsulting@gmail.com</p>
+    label: <p className="text-sm text-foreground font-medium">contact@greentany.com</p>
   },
   {
     icon: <MapPin className="h-5 w-5 text-primary mt-0.5" />,

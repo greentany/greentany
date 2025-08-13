@@ -14,7 +14,7 @@ const contactInfo = [
   {
     icon: Mail,
     title: 'Email',
-    details: ['greentanyconsulting@gmail.com'],
+    details: ['contact@greentany.com'],
     description: 'Réponse sous 24h'
   },
   {
@@ -89,7 +89,7 @@ const ContactPage = () => {
               {
                 icon: Mail,
                 title: 'Écrivez-nous',
-                info: 'greentanyconsulting@gmail.com',
+                info: 'contact@greentany.com',
                 subinfo: 'Réponse sous 24h'
               },
               {
@@ -120,7 +120,7 @@ const ContactPage = () => {
                 {item.title === 'Appelez-nous' ? (
                   <a href="tel:+261342844951" className="text-primary font-medium text-base hover:underline">+261 34 28 449 51</a>
                 ) : item.title === 'Écrivez-nous' ? (
-                  <a href="mailto:greentanyconsulting@gmail.com" className="text-primary font-medium text-base hover:underline">greentanyconsulting@gmail.com</a>
+                  <a href="mailto:contact@greentany.com" className="text-primary font-medium text-base hover:underline">contact@greentany.com</a>
                 ) : (
                   <p className="text-primary font-medium text-base">{item.info}</p>
                 )}
