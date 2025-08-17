@@ -16,16 +16,17 @@ const AboutConsulting: React.FC = () => {
     <section className="py-20 bg-gradient-to-br from-slate-50 to-blue-50">
       <div className="container mx-auto px-4">
         {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl font-bold text-slate-800 mb-4">
-            Producteur et grossiste d’Epices et Ingrédients - Grain sec et Fruits tropicaux, d’origine Madagascar
-          </h2>
-        </motion.div>
+        <motion.h2 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3, duration: 0.8 }}
+            className="text-4xl md:text-5xl font-bold text-slate-800 mb-6"
+          >
+           <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-teal-600 to-blue-800">
+           Producteur et grossiste d’Epices et Ingrédients - Grain sec et Fruits tropicaux, d’origine Madagascar
+</span>
+          </motion.h2>
 
         {/* First Section - Image Left, Content Right */}
         <motion.div
@@ -88,7 +89,7 @@ const AboutConsulting: React.FC = () => {
                             >
                               <Link to="/contact">
                               <button className="w-full py-4 bg-[#FF6600] text-white rounded-xl font-bold shadow-lg shadow-blue-500/20 hover:shadow-blue-500/40 transition-all">
-                                Demande dévis gratuit
+                                Contactez-nous
                               </button>
                               </Link>
                   </motion.div>

@@ -1,7 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown, BookOpen, ShieldCheck, BarChart2, Users, ClipboardCheck, ChevronLeft, ChevronRight } from 'lucide-react';
-import { useGSAPAnimations } from '@/hooks/useGSAPAnimations';
+
 
 const Hero = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -22,9 +21,6 @@ const Hero = () => {
     },
     {
       id: 2,
-      badge: "Exportation mondiale",
-      title: "PRODUCTEUR ET GROSSISTE D'EPICES D'ORIGINE MADAGASCAR",
-      description: "Exportation dans le Monde entier depuis Madagascar",
       image: "/hero2.png",
     }
   ];
@@ -49,7 +45,7 @@ const Hero = () => {
   const currentSlideData = slides[currentSlide];
 
   return (
-    <section id="accueil" className="relative min-h-screen flex items-center overflow-hidden">
+    <section id="accueil" className="relative w-full min-h-screen flex items-end overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0">
         <img
@@ -60,12 +56,21 @@ const Hero = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-slate-900/70 via-blue-900/40 to-slate-900/50"></div>
       </div>
 
+      {/* Logo en haut à gauche - toujours visible */}
+      <div className="absolute top-8 mt-24 left-16 z-45">
+        <img
+          src="/logo1.png"
+          alt="Greentany Logo"
+          className="h-20 w-auto md:h-24 lg:h-28 drop-shadow-lg"
+        />
+      </div>
 
 
-      <div ref={containerRef} className="container mx-auto px-4 py-20 relative z-10">
-        <div className="max-w-4xl mx-auto">
+
+      <div ref={containerRef} className="w-full px-4 pb-20 relative z-10">
+        <div className="w-full mx-auto">
           {/* Content */}
-          <div className="flex flex-col items-center text-center">
+          <div className="flex flex-col items-center text-center ">
             <AnimatePresence mode="wait">
               <motion.div
                 key={`slide-${currentSlide}`}
@@ -75,12 +80,6 @@ const Hero = () => {
                 transition={{ duration: 0.6 }}
                 className="space-y-8 flex flex-col items-center text-center"
               >
-                {currentSlideData.badge && (
-                  <div className="inline-flex items-center gap-3 bg-gradient-to-r from-blue-100 to-teal-100 backdrop-blur-sm px-4 py-2 rounded-full mb-6 border border-blue-400/30 shadow-lg">
-                    <div className="w-2 h-2 rounded-full bg-gradient-to-r from-blue-600 to-teal-600 animate-pulse"></div>
-                    <span className="text-sm font-semibold text-blue-700">{currentSlideData.badge}</span>
-                  </div>
-                )}
 
                 {currentSlideData.id === 2 ? (
                   <img
@@ -95,9 +94,9 @@ const Hero = () => {
                       initial={{ opacity: 0, y: 30 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.8, delay: 0.2 }}
-                      className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight"
+                      className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight"
                     >
-                      <span className="text-green-600">
+                      <span className="text-[#33CC33]">
                         {currentSlideData.title}
                       </span>
                     </motion.h1>
@@ -107,7 +106,7 @@ const Hero = () => {
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.6, delay: 0.4 }}
-                      className="text-2xl text-white font-medium leading-relaxed max-w-2xl"
+                      className="text-3xl md:text-4xl text-white font-medium leading-relaxed max-w-3xl"
                     >
                       {currentSlideData.description}
                     </motion.p>

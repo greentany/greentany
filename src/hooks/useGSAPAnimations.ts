@@ -11,6 +11,27 @@ export const useGSAPAnimations = () => {
   useEffect(() => {
     if (!containerRef.current) return;
 
+    // Animation d'entrée pour chaque section
+    const sections = containerRef.current.querySelectorAll('.section-gsap');
+    sections.forEach((section, index) => {
+      gsap.fromTo(
+        section,
+        { opacity: 0, y: 60 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: section,
+            start: 'top 80%',
+            toggleActions: 'play none none reverse',
+          },
+        }
+      );
+    });
+
+    // Animation d'entrée pour chaque carte (déjà existant)
     const cards = containerRef.current.querySelectorAll('.client-card');
     
     // Animation d'entrée pour chaque carte
@@ -42,7 +63,7 @@ export const useGSAPAnimations = () => {
       );
     });
 
-    // Animation de hover avec GSAP
+    // Animation de hover avec GSAP (déjà existant)
     cards.forEach((card) => {
       const cardElement = card as HTMLElement;
       
@@ -67,7 +88,7 @@ export const useGSAPAnimations = () => {
       });
     });
 
-    // Animation des statistiques
+    // Animation des statistiques (déjà existant)
     const statsElements = containerRef.current.querySelectorAll('.stat-number');
     statsElements.forEach((stat, index) => {
       gsap.fromTo(stat,

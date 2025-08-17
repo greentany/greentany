@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { useGSAPAnimations } from '@/hooks/useGSAPAnimations';
 
 const clients = [
   { name: 'RASSETA EXPORT', image: '/Image1.jpg', description: "Accompagnement en certification et audit." },
@@ -21,14 +22,22 @@ const clients = [
 ];
 
 const ReferencesPage = () => {
+  const containerRef = useGSAPAnimations();
   return (
-    <div className="min-h-screen bg-white">
+    <div ref={containerRef} className="min-h-screen bg-white">
       {/* Hero */}
-      <section className="relative py-24 md:py-36 overflow-hidden">
+      <section className="relative min-h-screen flex items-center overflow-hidden section-gsap">
         <div className="absolute inset-0">
           <img src="/cabinet.png" alt="Références" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-black/60" />
         </div>
+        {/* Logo en haut à gauche - toujours visible */}
+      <div className="absolute top-8 mt-24 left-16 z-45">
+        <img
+          src="/logo1.png"
+          alt="Greentany Logo"
+          className="h-20 w-auto md:h-24 lg:h-28 drop-shadow-lg"
+        />
+      </div>
         <div className="relative z-10 container mx-auto px-4 text-center">
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
@@ -42,7 +51,7 @@ const ReferencesPage = () => {
       </section>
 
       {/* Banner */}
-      <section className="container mx-auto px-4 py-12 md:py-16 text-center">
+      <section className="container mx-auto px-4 py-12 md:py-16 text-center section-gsap">
         <h3 className="text-2xl md:text-3xl font-extrabold text-blue-700">
           Références du cabinet
         </h3>
@@ -60,7 +69,7 @@ const ReferencesPage = () => {
       </section>
 
       {/* Grid */}
-      <section className="container mx-auto px-4 pb-16 md:pb-24">
+      <section className="container mx-auto px-4 pb-16 md:pb-24 section-gsap">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {clients.map((c) => (
             <div key={c.name} className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden p-6 flex flex-col items-center text-center gap-4">

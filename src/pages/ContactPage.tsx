@@ -3,6 +3,29 @@ import { MapPin, Clock, Phone, Mail, Map } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Cta from '@/components/Cta';
+import { useState, useEffect } from 'react';
+import { useGSAPAnimations } from '@/hooks/useGSAPAnimations';
+
+// Composant pour le texte dynamique
+const DynamicText = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const terminaisons = [
+    "une formation",
+    "la réalisation d'un audit",
+    "une démarche de certification",
+    "une externalisation",
+    "des informations sur nos produits"
+  ];
+  
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % terminaisons.length);
+    }, 2000);
+    return () => clearInterval(interval);
+  }, [terminaisons.length]);
+  
+  return terminaisons[currentIndex];
+};
 
 const contactInfo = [
   {
@@ -32,16 +55,24 @@ const contactInfo = [
 ];
 
 const ContactPage = () => {
+  const containerRef = useGSAPAnimations();
   return (
-    <div className="min-h-screen pt-20 bg-gradient-to-b from-[#f8fafc] via-[#f4f7fb] to-white">
+    <div ref={containerRef} className="min-h-screen pt-20 bg-gradient-to-b from-[#f8fafc] via-[#f4f7fb] to-white">
       {/* Hero Section */}
-      <section className="relative py-24 md:py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 to-blue-900/95 z-0"></div>
-        <div className="absolute inset-0 z-0 opacity-20" style={{
-          backgroundImage: "url('/african-office-1.jpg')",
+      <section className="relative min-h-screen flex items-center overflow-hidden section-gsap">
+        <div className="absolute inset-0 z-0" style={{
+          backgroundImage: "url('/bgcontact.png')",
           backgroundSize: "cover",
           backgroundPosition: "center"
         }}></div>
+        {/* Logo en haut à gauche - toujours visible */}
+      <div className="absolute top-8 mt-24 left-16 z-45">
+        <img
+          src="/logo1.png"
+          alt="Greentany Logo"
+          className="h-20 w-auto md:h-24 lg:h-28 drop-shadow-lg"
+        />
+      </div>
         
         <div className="container mx-auto px-4 relative z-10">
           <motion.div
@@ -64,19 +95,43 @@ const ContactPage = () => {
             </motion.h1>
             
             <motion.p 
-              className="text-xl text-white/90 max-w-3xl mx-auto"
+              className="text-xl text-[#FF6600] max-w-3xl mx-auto font-normal italic"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4 }}
             >
-              Notre équipe d'experts est à votre disposition pour répondre à toutes vos questions et vous accompagner dans vos projets qualité
+              Vous êtes curieux, vous souhaitez avoir plus d’informations sur notre société? Nous vous invitons à nous contacter par email, par téléphone. Nous ne manquerons pas de vous répondre dans les plus brefs délais.
             </motion.p>
           </motion.div>
         </div>
       </section>
+             {/* Section avec image et texte dynamique */}
+       <section className="container mx-auto px-4 py-16 section-gsap">
+         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+         <div className="flex justify-center lg:justify-end">
+             <img
+               src="/contact1.jpg"
+               alt="Contact Greentany"
+               className="w-full max-w-lg h-auto rounded-2xl shadow-xl"
+             />
+           </div>
+           <div className="space-y-6">
+             <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 leading-tight">
+               Vous pouvez demander un devis pour
+             </h3>
+             <div className="h-16 flex items-center">
+               <span className="text-3xl md:text-3xl lg:text-4xl font-semibold text-[#33CC33]">
+                 <DynamicText />
+               </span>
+             </div>
+           </div>
+           
+         </div>
+       </section>
+      
 
       {/* Quick Contact Cards */}
-      <section className="py-16 bg-transparent">
+      <section className="py-16 bg-transparent section-gsap">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
@@ -95,7 +150,7 @@ const ContactPage = () => {
               {
                 icon: MapPin,
                 title: 'Visitez-nous',
-                info: 'Antananarivo, Madagascar',
+                info: 'Toamasina, Madagascar',
                 subinfo: 'Sur rendez-vous'
               },
               {
@@ -132,7 +187,7 @@ const ContactPage = () => {
       </section>
 
       {/* Main Contact Section (info + map) */}
-      <section className="py-20 bg-gradient-to-b from-white via-[#f8fafc] to-[#f1f5f9]">
+      <section className="py-20 bg-gradient-to-b from-white via-[#f8fafc] to-[#f1f5f9] section-gsap">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -223,18 +278,23 @@ const ContactPage = () => {
                     Retrouvez-nous à notre siège social à Antananarivo, Madagascar.
                   </CardDescription>
                 </CardHeader>
-                <CardContent className="space-y-6">
-                  <div className="text-lg text-gray-700 font-medium mb-2">
-                    Lot II H 12 QA Bis, Ankerana Ankadindramamy<br />
-                    Antananarivo - 101 Madagascar
-                  </div>
-                  <div className="h-56 rounded-xl bg-gradient-to-br from-indigo-100 to-blue-100 flex items-center justify-center border border-indigo-100">
-                    <div className="flex flex-col items-center">
-                      <MapPin className="h-12 w-12 text-indigo-300 mb-2" />
-                      <span className="text-gray-400">Carte interactive disponible bientôt</span>
-                    </div>
-                  </div>
-                </CardContent>
+                                 <CardContent className="space-y-6">
+                   <div className="text-lg text-gray-700 font-medium mb-2">
+                     Toamasina - 501 Madagascar
+                   </div>
+                   <div className="h-56 rounded-xl overflow-hidden border border-indigo-100">
+                     <iframe
+                       src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12147.5!2d49.3954!3d-18.1499!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x21f0b3b3b3b3b3b3%3A0x21f0b3b3b3b3b3b3!2sToamasina%2C%20Madagascar!5e0!3m2!1sfr!2sfr!4v1234567890"
+                       width="100%"
+                       height="100%"
+                       style={{ border: 0 }}
+                       allowFullScreen
+                       loading="lazy"
+                       referrerPolicy="no-referrer-when-downgrade"
+                       title="Carte de Toamasina, Madagascar"
+                     ></iframe>
+                   </div>
+                 </CardContent>
               </Card>
             </motion.div>
           </div>

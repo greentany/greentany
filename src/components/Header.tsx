@@ -62,13 +62,11 @@ const Header = () => {
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300`}>
       <AnnouncementBar />
-      <div className={`container mx-auto px-4 ${
-        isScrolled ? 'bg-white backdrop-blur-md shadow-lg' : ''
-      }`}>
-        <div className="flex items-center justify-between h-16">
+      <div className='bg-white backdrop-blur-md shadow-lg' >
+        <div className="container mx-auto px-4 flex items-center align-center justify-between h-20 max-w-6xl">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2">
-            <img src="/logo.jpg" alt="Greentany" className="h-10 w-auto" />
+            <img src="/logo.jpg" alt="Greentany" className="h-14 w-auto" />
           </Link>
 
           {/* Desktop Navigation */}
@@ -81,7 +79,7 @@ const Header = () => {
                     <DropdownMenu>
                       <DropdownMenuTrigger asChild>
                         <motion.button 
-                          className={`flex items-center gap-2 font-medium transition-all duration-300 px-3 py-2 rounded-lg hover:bg-slate-100/50 ${
+                          className={`flex items-center gap-2 font-semibold text-lg transition-all duration-300 px-4 py-3 rounded-lg hover:bg-slate-100/50 ${
                             isActive ? 'text-blue-600 bg-blue-50' : 'text-slate-700 hover:text-blue-600'
                           }`}
                           whileHover={{ scale: 1.05 }}
@@ -92,7 +90,7 @@ const Header = () => {
                             animate={{ rotate: 0 }}
                             transition={{ duration: 0.2 }}
                           >
-                            <FaChevronDown className="h-3 w-3" />
+                            <FaChevronDown className="h-4 w-4" />
                           </motion.div>
                         </motion.button>
                       </DropdownMenuTrigger>
@@ -161,10 +159,10 @@ const Header = () => {
                     >
                       <Link
                         to={item.href}
-                        className={`font-medium transition-all duration-300 rounded-lg ${
+                        className={`font-semibold text-lg transition-all duration-300 rounded-lg ${
                           item.label === 'Contact'
-                            ? 'px-4 py-2 bg-slate-700 text-white hover:bg-slate-800 shadow-sm'
-                            : `px-3 py-2 hover:bg-slate-100/50 ${
+                            ? 'px-6 py-3 bg-slate-700 text-white hover:bg-slate-800 shadow-sm'
+                            : `px-4 py-3 hover:bg-slate-100/50 ${
                                 isActive ? 'text-blue-600 bg-blue-50' : 'text-slate-700 hover:text-blue-600'
                               }`
                         }`}
@@ -180,13 +178,13 @@ const Header = () => {
 
           {/* Contact & Social Links */}
           <div className="hidden md:flex items-center gap-4">
-            <div className="flex items-center gap-2 text-slate-700">
-              <FaWhatsapp className="h-4 w-4 text-green-600" />
+            <div className="flex items-center gap-3 text-slate-700">
+              <FaWhatsapp className="h-6 w-6 text-green-600" />
               <a 
                 href="https://wa.me/261342844951"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm font-medium hover:text-green-600 transition-colors duration-200"
+                className="text-base font-semibold hover:text-green-600 transition-colors duration-200"
                 aria-label="WhatsApp"
               >
                 +261 34 28 449 51
@@ -197,9 +195,9 @@ const Header = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-2 text-slate-700 hover:text-blue-600 transition-colors duration-200"
+            className="md:hidden p-3 text-slate-700 hover:text-blue-600 transition-colors duration-200"
           >
-            {isMenuOpen ? <FaTimes className="h-6 w-6" /> : <FaBars className="h-6 w-6" />}
+            {isMenuOpen ? <FaTimes className="h-8 w-8" /> : <FaBars className="h-8 w-8" />}
           </button>
         </div>
 

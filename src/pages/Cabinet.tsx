@@ -1,18 +1,29 @@
 import About from '@/components/About';
 import { motion } from 'framer-motion';
+import { FaCheckCircle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { useGSAPAnimations } from '@/hooks/useGSAPAnimations';
 
 const Cabinet = () => {
+  const containerRef = useGSAPAnimations();
   return (
-    <div className="min-h-screen bg-white">
+    <div ref={containerRef} className="min-h-screen w-full bg-white">
       {/* Hero: image de fond + titre centré */}
-      <section className="relative py-28 md:py-40 overflow-hidden">
+      <section className="relative min-h-screen flex items-center overflow-hidden section-gsap">
         <div className="absolute inset-0">
           <div
             className="w-full h-full bg-cover bg-center"
             style={{ backgroundImage: "url('/cabinet.png')" }}
           ></div>
-          <div className="absolute inset-0 bg-black/60" />
+
+          <div className="absolute top-8 mt-24 left-16 z-45">
+        <img
+          src="/logo1.png"
+          alt="Greentany Logo"
+          className="h-20 w-auto md:h-24 lg:h-28 drop-shadow-lg"
+        />
+      </div>
+  
         </div>
         <div className="relative z-10 container mx-auto px-4 text-center">
           <motion.h1
@@ -28,13 +39,44 @@ const Cabinet = () => {
 
       <About/>
 
-      {/* Description: fond image + overlay dark + contenu centré */}
-      <section className="relative py-20 md:py-28 overflow-hidden">
-        <img src="/cabinet1.png" alt="Cabinet" className="w-full h-auto object-cover" />
+      {/* Section Cabinet - Nos métiers */}
+      <section className="relative py-24 md:py-32 bg-cover bg-center section-gsap" style={{ backgroundImage: "url('/contact-banner.png')" }}>
+        <div className="container mx-auto px-4 relative z-10 text-white">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-12">
+            Le cabinet - Nos métiers
+          </h2>
+
+          <div className="max-w-4xl mx-auto space-y-8">
+            <p className="text-lg leading-relaxed">
+              Quel que soit votre besoin, votre secteur d'activité, votre taille, <span className="text-[#FFC107] font-bold">GREENTANY CONSULTING</span> dispose d'atouts qui permettront de répondre à vos attentes :
+            </p>
+
+            <ul className="space-y-6">
+              <li className="flex items-start gap-3">
+                <FaCheckCircle className="mt-1 h-6 w-6 text-[#33CC33] flex-shrink-0" />
+                <p className="text-lg leading-relaxed">
+                  Une maîtrise des référentiels reconnus en matière de QHSE, de RSE et de sécurité alimentaire : <span className="text-[#FFC107] font-bold">GLOBALG.A.P.</span>, <span className="text-[#FFC107] font-bold">GRASP</span>, <span className="text-[#FFC107] font-bold">RAINFOREST ALLIANCE</span>, <span className="text-[#FFC107] font-bold">AGRICULTURE BIOLOGIQUE</span>, <span className="text-[#FFC107] font-bold">SMETA</span>, <span className="text-[#FFC107] font-bold">HACCP</span>... qui leur permet d'appréhender les exigences de manière pratique
+                </p>
+              </li>
+              <li className="flex items-start gap-3">
+                <FaCheckCircle className="mt-1 h-6 w-6 text-[#33CC33] flex-shrink-0" />
+                <p className="text-lg leading-relaxed">
+                  Une expertise en audit, qui permet de réaliser les missions dans les mêmes conditions que les audits de certification.
+                </p>
+              </li>
+              <li className="flex items-start gap-3">
+                <FaCheckCircle className="mt-1 h-6 w-6 text-[#33CC33] flex-shrink-0" />
+                <p className="text-lg leading-relaxed">
+                  Une forte expérience en matière de formation de professionnels locaux avec plus de 1000 petits producteurs de produits locaux et de 50 ingénieur et technicien formés, qui permet d'adapter les outils et les techniques afin de rendre les sessions les plus efficaces possibles
+                </p>
+              </li>
+            </ul>
+          </div>
+        </div>
       </section>
 
       {/* Details section: alternance texte/image + bouton */}
-      <section className="container mx-auto px-4 py-16 md:py-20">
+      <section className="container mx-auto px-4 py-16 md:py-20 section-gsap">
         <div className="space-y-16">
           {/* Bloc 1: texte à gauche, image à droite */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -58,7 +100,7 @@ const Cabinet = () => {
             </div>
           </div>
 
-          {/* Bloc 2: image à gauche, texte à droite */}
+          {/* Bloc 3: image à gauche, texte à droite */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="order-last lg:order-first">
               <img
@@ -79,7 +121,7 @@ const Cabinet = () => {
               </p>
               <Link to="/contact">
               <button className="px-6 md:px-8 py-3 md:py-4 bg-[#FF6600] text-white rounded-xl font-bold shadow-lg hover:brightness-110 transition">
-                Découvrir nos clients
+              Demander un devis gratuit
               </button>
             </Link>
             </div>
@@ -90,9 +132,9 @@ const Cabinet = () => {
       </section>
 
       {/* Solutions section */}
-      <section className="container mx-auto px-4 py-16 md:py-20">
+      <section className="container mx-auto px-4 py-16 md:py-20 section-gsap">
         <div className="max-w-4xl mx-auto text-center">
-          <h3 className="text-2xl md:text-3xl font-extrabold text-blue-700">
+          <h3 className="text-2xl md:text-3xl font-extrabold text-slate-900">
             Des solutions sur mesure pour structurer et dynamiser vos démarches QSE et RSE
           </h3>
           <div className="mt-6 space-y-4 text-slate-600">
@@ -142,7 +184,7 @@ const Cabinet = () => {
       </section>
 
       {/* CTA section: texte à gauche + image à droite */}
-      <section className="container mx-auto px-4 py-16 md:py-20">
+      <section className="container mx-auto px-4 py-16 md:py-20 section-gsap">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-5">
             <h3 className="text-3xl md:text-4xl font-bold text-slate-900">

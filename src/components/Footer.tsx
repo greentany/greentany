@@ -14,39 +14,37 @@ const navItems = [
 
 const contactInfo = [
   {
-    icon: <Phone className="h-5 w-5 text-primary mt-0.5" />,
+    icon: <Phone className="h-5 w-5 text-[#33CC33] mt-0.5" />,
     label: (
       <div>
-        <a href="tel:+261342844951" className="text-sm text-foreground font-medium hover:underline">+261 34 28 449 51</a>
-        <p className="text-sm text-foreground font-medium">
+        <a href="tel:+261342844951" className="text-sm text-white font-medium hover:underline">+261 34 28 449 51</a>
+        <p className="text-sm text-white font-medium">
           <a href="tel:+261320446365" className="hover:underline">+261 32 04 463 65</a>
         </p>
       </div>
     )
   },
   {
-    icon: <FaWhatsapp className="h-5 w-5 text-green-600 mt-0.5" />,
+    icon: <FaWhatsapp className="h-5 w-5 text-[#33CC33] mt-0.5" />,
     label: (
-      <a href="https://wa.me/261342844951" target="_blank" rel="noopener noreferrer" className="text-sm text-foreground font-medium hover:underline">
+      <a href="https://wa.me/261342844951" target="_blank" rel="noopener noreferrer" className="text-sm text-white font-medium hover:underline">
         +261 34 28 449 51
       </a>
     )
   },
   {
-    icon: <Mail className="h-5 w-5 text-primary mt-0.5" />,
+    icon: <Mail className="h-5 w-5 text-[#33CC33] mt-0.5" />,
     label: (
-      <a href="mailto:contact@greentany.com" className="text-sm text-foreground font-medium hover:underline">
+      <a href="mailto:contact@greentany.com" className="text-sm text-white font-medium hover:underline">
         contact@greentany.com
       </a>
     )
   },
   {
-    icon: <MapPin className="h-5 w-5 text-primary mt-0.5" />,
+    icon: <MapPin className="h-5 w-5 text-[#33CC33] mt-0.5" />,
     label: (
       <div>
-        <p className="text-sm text-foreground">Lot II H 12 QA Bis</p>
-        <p className="text-sm text-foreground">Ankerana Ankadindramamy</p>
-        <p className="text-sm text-foreground">Antananarivo - 101 Madagascar</p>
+        <p className="text-sm text-white">Toamasina, Madagascar</p>
       </div>
     )
   }
@@ -74,10 +72,10 @@ const legalLinks = [
 
 const Footer = () => {
   return (
-    <footer className="py-12 bg-white relative overflow-hidden">
+    <footer className="pt-12 pb-4bg-white relative overflow-hidden">
       {/* Background image + animated gradients */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-[url('/footerbg.png')] bg-cover bg-center opacity-40"></div>
+        <div className="absolute inset-0 bg-[url('/footerbg.png')] bg-cover bg-center "></div>
         
       </div>
       
@@ -88,19 +86,19 @@ const Footer = () => {
             <div className="flex items-center gap-2 lg:justify-start">
               <a href="/">
                 <img
-                  src="/logo.jpg"
+                  src="/logo1.png"
                   alt="Greentany "
                   title="Greentany"
-                  className="h-12"
+                  className="h-24"
                 />
               </a>
-              <h2 className="text-xl font-semibold">Greentany</h2>
+              
             </div>
-            <p className="max-w-[70%] text-sm text-muted-foreground">
+            <p className="max-w-[70%] text-lg text-[#33CC33]">
               Expert en conformité depuis 2008. Consultants en sécurité, qualité des aliments et des normes sociales.
             </p>
             {/* Contact Info */}
-            <div className="mt-8 space-y-4">
+            <div className="mt-4 space-y-4">
               {contactInfo.map((item, idx) => (
                 <div key={idx} className="flex items-start space-x-3">
                   {item.icon}
@@ -113,12 +111,12 @@ const Footer = () => {
           <div className="grid w-full gap-6 md:grid-cols-3 lg:gap-20">
             {sections.map((section, sectionIdx) => (
               <div key={sectionIdx}>
-                <h3 className="mb-4 font-bold">{section.title}</h3>
-                <ul className="space-y-3 text-sm text-muted-foreground">
+                <h3 className="mb-4 font-bold text-white">{section.title}</h3>
+                <ul className="space-y-3 text-sm ">
                   {section.links.map((link, linkIdx) => (
                     <li
                       key={linkIdx}
-                      className="font-medium hover:text-primary"
+                      className="font-medium text-[#33CC33] hover:text-white"
                     >
                       <Link to={link.href}>{link.name}</Link>
                     </li>
@@ -131,10 +129,10 @@ const Footer = () => {
           </div>
           {/* Legal Links */}
         <div className="mt-8 flex flex-col justify-between gap-4 border-t py-8 text-xs font-medium text-muted-foreground md:flex-row md:items-center md:text-left">
-          <p className="order-2 lg:order-1">© 2024 Greentany Consulting. Tous droits réservés. Spécialiste en qualité, sécurité alimentaire et normes sociales.</p>
+          <p className="order-2 text-[#33CC33] lg:order-1">© 2024 Greentany Consulting. Tous droits réservés. Spécialiste en qualité, sécurité alimentaire et normes sociales.</p>
           <ul className="order-1 flex flex-col gap-2 md:order-2 md:flex-row">
             {legalLinks.map((link, idx) => (
-              <li key={idx} className="hover:text-primary">
+              <li key={idx} className="text-[#33CC33] hover:text-white">
                 <Link to={link.href}> {link.name}</Link>
               </li>
             ))}

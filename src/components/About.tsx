@@ -46,9 +46,8 @@ const About = () => {
             viewport={{ once: true }}
             className="space-y-10"
           >
-            <div className="inline-flex items-center gap-2 bg-teal-100 px-4 py-2 rounded-full">
-              <div className="w-2 h-2 rounded-full bg-teal-600 animate-pulse"></div>
-              <span className="text-sm font-bold text-teal-700">Qui sommes-nous?</span>
+            <div className="inline-flex items-center gap-2 ">
+              <span className="text-xl font-bold text-slate-700">Qui sommes-nous?</span>
             </div>
             <div className="space-y-6">
               <p className="text-lg text-slate-600 leading-relaxed">
@@ -73,7 +72,7 @@ const About = () => {
               className="pt-4"
             >
               <Link to="/contact">
-              <button className="w-full py-4 bg-[#FF6600] text-white rounded-xl font-bold shadow-lg shadow-blue-500/20 hover:shadow-blue-500/40 transition-all">
+              <button className="flex align-center justify-center items-center p-4 bg-[#FF6600] text-white rounded-xl font-bold shadow-lg shadow-blue-500/20 hover:shadow-blue-500/40 transition-all">
                 Demande dévis gratuit
               </button>
               </Link>
@@ -95,7 +94,7 @@ const About = () => {
             >
               <div className="absolute inset-0 bg-gradient-to-t from-slate-900/30 to-transparent z-10"></div>
               <img 
-                src="/consulting.jpg" 
+                src="/consulting1.jpg" 
                 alt="Expert QHSE" 
                 className="w-full h-auto object-cover"
               />
@@ -105,6 +104,38 @@ const About = () => {
           </motion.div>
         </div>
       </div>
+
+      {/* Section Cabinet - Solutions sur mesure */}
+      <section className="py-24 bg-gradient-to-b from-slate-50 to-white">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <img
+                src="/cabinet4.jpg"
+                alt="Cabinet Greentany"
+                className="w-full h-[360px] object-cover rounded-3xl shadow-xl"
+              />
+            </div>
+            
+            <div className="space-y-4">
+              <h3 className="text-2xl md:text-3xl font-bold text-slate-900">
+                Des solutions sur mesure pour structurer et dynamiser vos démarches QSE et RSE
+              </h3>
+              <p className="text-slate-600 leading-relaxed">
+              Spécialistes des référentiels reconnus – <span className='text-[#FF6600] font-bold'>GLOBALGAP, GRASP, HACCP, Agriculture Biologique, FLO Fair-Trade TRADER & SPO, RAINFOREST ALLIANCE, SMETA …</span> – nous vous accompagnons dans la mise en place, l’optimisation et l’amélioration continue de votre système de management QHSE et RSE.
+              </p>
+              <p className="text-slate-600 leading-relaxed">
+              Notre approche vise à garantir la conformité normative et réglementaire, sécuriser vos certifications, renforcer la satisfaction client et faire évoluer vos démarches vers plus de performance. Nous vous aidons à structurer des Systèmes de Management à forte valeur ajoutée.
+              </p>
+              <Link to="/contact">
+                <button className="mt-4 px-6 md:px-8 py-3 md:py-4 bg-[#FF6600] text-white rounded-xl font-bold shadow-lg hover:brightness-110 transition">
+                  Demander un devis
+                </button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
     </section>
   );
 };
