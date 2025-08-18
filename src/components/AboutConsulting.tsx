@@ -21,7 +21,7 @@ const AboutConsulting: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3, duration: 0.8 }}
-            className="text-4xl md:text-5xl font-bold text-slate-800 mb-6"
+            className="text-4xl md:text-5xl font-bold text-slate-800 mb-6 text-center"
           >
            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-teal-600 to-blue-800">
            Producteur et grossiste d’Epices et Ingrédients - Grain sec et Fruits tropicaux, d’origine Madagascar

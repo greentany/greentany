@@ -85,7 +85,7 @@ const Hero = () => {
                   <img
                     src="/hero5.png"
                     alt="Slide illustration"
-                    className="w-full max-w-3xl rounded-lg shadow-xl"
+                    className="w-full max-w-xl sm:max-w-2xl md:max-w-3xl lg:max-w-4xl xl:max-w-5xl rounded-lg shadow-xl h-auto object-contain"
                   />
                 ) : (
                   <>

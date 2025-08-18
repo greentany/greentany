@@ -86,7 +86,7 @@ const ContactPage = () => {
             </div>
             
             <motion.h1 
-              className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white mb-6"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2 }}

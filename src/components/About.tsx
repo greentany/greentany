@@ -47,7 +47,7 @@ const About = () => {
             className="space-y-10"
           >
             <div className="inline-flex items-center gap-2 ">
-              <span className="text-xl font-bold text-slate-700">Qui sommes-nous?</span>
+              <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-slate-700">Qui sommes-nous?</span>
             </div>
             <div className="space-y-6">
               <p className="text-lg text-slate-600 leading-relaxed">

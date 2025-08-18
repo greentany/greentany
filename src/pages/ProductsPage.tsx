@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
@@ -67,7 +67,7 @@ const products = [
     categoryLabel: 'Épices et Ingrédients'
   },
   {
-    id: 6,
+    id: 18,
     name: 'CURCUMA EN LAMELLE',
     englishName: 'Turmeric sliced',
     botanicalName: 'Curcuma longa',
@@ -189,8 +189,32 @@ const products = [
   }
 ];
 
+const categoryOptions = [
+  { label: 'Tous nos produits', value: 'all' },
+  { label: 'Nos épices et ingrédients', value: 'epices' },
+  { label: 'Nos fruits tropicaux', value: 'fruits' },
+  { label: 'Nos grains secs', value: 'grains' },
+];
+
 const ProductsPage = () => {
   const containerRef = useGSAPAnimations();
+  const [category, setCategory] = useState('all');
+  // Filtrage dynamique
+  const filteredProducts = products.filter((p) => {
+    if (category === 'all') return true;
+    if (category === 'grains') {
+      // Grains secs = produits dont le nom ou la catégorie contient "haricot", "pois", "beans", "grains"
+      return (
+        /haricot|pois|bean|grain/i.test(p.name) || /haricot|pois|bean|grain/i.test(p.englishName) || /grains/i.test(p.categoryLabel)
+      );
+    }
+    if (category === 'fruits') {
+      // Fruits tropicaux = catégorie fruits
+      return p.category === 'fruits';
+    }
+    // Épices et ingrédients = catégorie epices
+    return p.category === 'epices';
+  });
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { staggerChildren: 0.05 } },
@@ -222,7 +246,7 @@ const ProductsPage = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="text-4xl md:text-6xl font-extrabold text-white"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white"
             >
               Nos produits
             </motion.h1>
@@ -241,6 +265,20 @@ const ProductsPage = () => {
               </Button>
             </Link>
           </div>
+        </section>
+
+        {/* Filtres produits */}
+        <section className="container mx-auto px-4 py-4 flex flex-wrap gap-4 justify-center items-center">
+          {categoryOptions.map((opt) => (
+            <Button
+              key={opt.value}
+              variant={category === opt.value ? 'hero' : 'outline'}
+              onClick={() => setCategory(opt.value)}
+              className="min-w-[180px]"
+            >
+              {opt.label}
+            </Button>
+          ))}
         </section>
 
         {/* About: deux blocs alternés */}
@@ -308,10 +346,10 @@ const ProductsPage = () => {
             viewport={{ once: true, margin: '-100px' }}
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
-            {products.map((product) => (
+            {filteredProducts.map((product) => (
               <motion.div key={product.id} variants={itemVariants} className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
                 <div className="w-full h-48 flex items-center justify-center bg-gray-50">
-                  <img src={product.image} alt={product.name} className="w-full h-full object-contain" />
+                  <img src={product.image} alt={product.name} className="w-full h-full object-contain scale-110 transition-transform duration-300" />
                 </div>
                 <div className="p-6">
                   <h4 className="font-bold text-lg text-slate-900">{product.name}</h4>
