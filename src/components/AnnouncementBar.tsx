@@ -1,5 +1,7 @@
 import React from 'react';
 import { FaFacebook, FaLinkedin, FaEnvelope } from 'react-icons/fa';
+import { FaXTwitter } from "react-icons/fa6";
+
 
 const AnnouncementBar: React.FC = () => {
   return (
@@ -15,7 +17,7 @@ const AnnouncementBar: React.FC = () => {
           </a>
           <div className="flex items-center gap-4">
             <a
-              href="https://www.linkedin.com"
+              href="https://mg.linkedin.com/in/greentany-madagascar-b5a04137a"
               target="_blank"
               rel="noopener noreferrer"
               className="text-green-500 hover:text-white transition-colors duration-200"
@@ -31,6 +33,15 @@ const AnnouncementBar: React.FC = () => {
               aria-label="Facebook"
             >
               <FaFacebook className="h-5 w-5 md:h-6 md:w-6" />
+            </a>
+            <a
+              href="https://x.com/greentany"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-green-500 hover:text-white transition-colors duration-200"
+              aria-label="Facebook"
+            >
+              <FaXTwitter className="h-5 w-5 md:h-6 md:w-6" />
             </a>
           </div>
         </div>

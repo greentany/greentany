@@ -71,7 +71,7 @@ const AboutConsulting: React.FC = () => {
                   Notre société́ <span className='font-bold text-[#FF9900]'>GREENTANY EXPORT</span> est présent  à Madagascar depuis 2016. Les principales activités de la société sont l'agroalimentaire, l'industrie et les services.
                 </p>
                 <p className="text-lg text-slate-600 leading-relaxed">
-                  La société  <span className='font-bold text-[#FF9900]'>GREENTANY EXPORT</span> est spécialisé dans l'exportation dans le Monde entier depuis Madagascar, de fruits frais (litchi, banane, ..) épices et ingrédients (poivre noir, vanille, clou de girofle, cannelle, curcuma, bais rose, gingembre, etc.) grains secs (haricot rouge sec, pois du cap sec, black eyes, …)
+                  La société  <span className='font-bold text-[#FF9900]'>GREENTANY EXPORT</span> est spécialisé dans l'exportation dans le Monde entier depuis Madagascar, de fruits frais <span className='font-bold'>(litchi, banane, ..)</span> épices et ingrédients <span className="font-bold">(poivre noir, vanille, clou de girofle, cannelle, curcuma, bais rose, gingembre, etc.)</span> grains secs <span className="font-bold">(haricot rouge sec, pois du cap sec, cornille, …)</span>
                 </p>
                 <p className="text-lg text-slate-600 leading-relaxed">
                   La société est l'un des leaders impliqués dans les processus commerciaux de qualité et éthiques, et se positionne comme une entreprise exemplaire dans le secteur agro-alimentaire.

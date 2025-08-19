@@ -159,7 +159,7 @@ const products = [
   },
   {
     id: 13,
-    name: 'HARICOTS ŒIL NOIR',
+    name: 'CORNILLE',
     englishName: 'Black Eyes',
     botanicalName: 'Vigna unguiculata',
     image: '/HARICOTS ŒIL NOIR.jpg',

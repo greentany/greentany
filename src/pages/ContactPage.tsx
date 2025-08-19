@@ -100,7 +100,7 @@ const ContactPage = () => {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4 }}
             >
-              Vous êtes curieux, vous souhaitez avoir plus d’informations sur notre société? Nous vous invitons à nous contacter par email, par téléphone. Nous ne manquerons pas de vous répondre dans les plus brefs délais.
+              Vous êtes curieux, vous souhaitez avoir plus d’informations sur notre société? Nous vous invitons à nous contacter par email ou par téléphone. Nous ne manquerons pas de vous répondre dans les plus brefs délais.
             </motion.p>
           </motion.div>
         </div>
