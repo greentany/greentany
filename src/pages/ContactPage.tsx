@@ -43,7 +43,7 @@ const contactInfo = [
   {
     icon: MapPin,
     title: 'Adresse',
-    details: ['Lot II H 12 QA Bis', 'Ankerana Ankadindramamy', 'Antananarivo - 101 Madagascar'],
+    details: ['Toamasina- Madagascar'],
     description: 'Siège social'
   },
   {
@@ -275,7 +275,7 @@ const ContactPage = () => {
                     Notre Localisation
                   </CardTitle>
                   <CardDescription>
-                    Retrouvez-nous à notre siège social à Antananarivo, Madagascar.
+                    Retrouvez-nous à notre siège social à Toamasina, Madagascar.
                   </CardDescription>
                 </CardHeader>
                                  <CardContent className="space-y-6">
