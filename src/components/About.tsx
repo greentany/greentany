@@ -51,7 +51,7 @@ const About = () => {
             </div>
             <div className="space-y-6">
               <p className="text-lg text-slate-600 leading-relaxed">
-                Fondé en 2016, <span className='font-bold text-[#FF9900] '>GREENTANY CONSULTING</span> est un cabinet de conseil spécialisé dans le management de la qualité,
+                Fondé en 2008, <span className='font-bold text-[#FF9900] '>GREENTANY CONSULTING</span> est un cabinet de conseil spécialisé dans le management de la qualité,
                  santé sécurité au travail, environnement, 
                  ainsi que dans la responsabilité sociétale des entreprises 
                  (RSE).
