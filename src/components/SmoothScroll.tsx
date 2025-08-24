@@ -27,6 +27,14 @@ const SmoothScroll: React.FC<SmoothScrollProps> = ({ children }) => {
 
     const lenis = lenisRef.current;
 
+    // Expose Lenis instance for other components (safe minimal global)
+    try {
+      // @ts-expect-error - augment window with __lenis for cross-component access
+      window.__lenis = lenis;
+    } catch (e) {
+      // ignore in non-browser environments
+    }
+
     // Fonction RAF optimisée
     function raf(time: number) {
       lenis.raf(time);
