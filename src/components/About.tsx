@@ -33,7 +33,7 @@ const About = () => {
             className="text-4xl md:text-5xl font-bold text-slate-800 mb-6"
           >
            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-teal-600 to-blue-800">Expert en management QHSE et RSE depuis 2008
-</span>
+          </span>
           </motion.h2>
           
         </motion.div>
