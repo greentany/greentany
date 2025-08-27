@@ -32,7 +32,7 @@ const About = () => {
             transition={{ delay: 0.3, duration: 0.8 }}
             className="text-4xl md:text-5xl font-bold text-slate-800 mb-6"
           >
-           <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-teal-600 to-blue-800">Expert en management QHSE et RSE depuis 2016
+           <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-teal-600 to-blue-800">Expert en management QHSE et RSE depuis 2008
 </span>
           </motion.h2>
           

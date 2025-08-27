@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://greentany.com/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.00</priority>
+    <lastmod>2025-08-27</lastmod>
+  </url>
+  <url>
+    <loc>https://greentany.com/produits</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+    <lastmod>2025-08-27</lastmod>
+  </url>
+  <url>
+    <loc>https://greentany.com/cabinet</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+    <lastmod>2025-08-27</lastmod>
+  </url>
+  <url>
+    <loc>https://greentany.com/contact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.64</priority>
+    <lastmod>2025-08-27</lastmod>
+  </url>
+  <url>
+    <loc>https://greentany.com/references</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.64</priority>
+    <lastmod>2025-08-27</lastmod>
+  </url>
+</urlset>
